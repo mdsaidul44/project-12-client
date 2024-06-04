@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form"
+import useAuth from "../../Hooks/useAuth";
 
 
 const Login = () => {
-
+    const {loginUser} = useAuth()
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const onSubmit = (data) => {
         console.log(data)
+        loginUser(data.email,data.password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
     return (
         <div className="  text-white mt-20 rounded-xl bg-slate-900 h-full" >
@@ -77,19 +85,14 @@ const Login = () => {
                             </div>
 
                             <input 
-                                {...register("email", { required: true })}
+                                {...register("password", { required: true })}
                                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                                 type='password'
                             />
                              {errors.password && <small className="text-red-500">Password field is required.</small>}
                         </div>
                         <div className='mt-6'> 
-                            <button
-                                type='submit'
-                                className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
-                            >
-                                Sign In
-                            </button>
+                        <input type="submit"  className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50' value="Sign In" /> 
                         </div>
                     </form>
 

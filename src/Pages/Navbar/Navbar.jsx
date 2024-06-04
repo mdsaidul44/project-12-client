@@ -4,12 +4,12 @@ import bloodWave from '../../assets/bloodWave.jpg'
 const Navbar = () => {
     const Navlink = <>
         <Link><li><a>donation requests</a></li></Link>
-        <Link><li><a>Blog</a></li></Link>
+        <Link to='/blog'><li><a>Blog</a></li></Link>
         <li><a>Dashboard</a></li>
     </>
     return (
         <div>
-            <div className="navbar fixed z-50 lg:w-[1439px] bg-base-300 text-black font-bold bg-opacity-40  ">
+            <div className="navbar fixed z-50 lg:w-[1439px] bg-base-300 text-lime-100 font-bold bg-opacity-40  ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
