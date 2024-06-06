@@ -8,6 +8,9 @@ import Home from "../Pages/Home/Home/Home";
 import Registration from "../Pages/Home/Registration/Registration";
 import Blog from "../Pages/Home/BlogPage/Blog/Blog";
 import BlogDetails from "../Pages/Home/BlogPage/Blog/BlogDetails/BlogDetails";
+import PrivateRouter from "./PrivateRouter";
+import Dashboard from "../Dashboard/Dashboard";
+import DonorHome from "../Dashboard/DonorDashboard/DonorHome";
 
 
   const router = createBrowserRouter([
@@ -39,6 +42,17 @@ import BlogDetails from "../Pages/Home/BlogPage/Blog/BlogDetails/BlogDetails";
         }
       ]
     },
+    {
+      path: 'dashboard',
+      element: <PrivateRouter><Dashboard/></PrivateRouter>,
+      children:[
+        // donor
+        {
+          path: 'donorHome',
+          element: <DonorHome/>
+        }
+      ] 
+    }
 
   ]);
 

@@ -1,11 +1,21 @@
 import { Link } from 'react-router-dom';
 import bloodWave from '../../assets/bloodWave.jpg'
+import useAuth from '../../Hooks/useAuth';
 
 const Navbar = () => {
+    const { user , logOut} = useAuth()
+
+    const handleLogout = ()=>{
+        logOut()
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(console.error(error))
+    }
     const Navlink = <>
         <Link><li><a>donation requests</a></li></Link>
         <Link to='/blog'><li><a>Blog</a></li></Link>
-        <li><a>Dashboard</a></li>
+        {/* <Link to='/dashboard'><li><a>Dashboard</a></li></Link> */}
     </>
     return (
         <div>
@@ -27,22 +37,22 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='/login'><a className="btn">Login</a></Link>
-                    <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+
+                    {user ? <> <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img alt="Tailwind CSS Navbar component"  src={user?.photoURL} />
+                            </div>
                         </div>
-                    </div>
-                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-slate-300-100 rounded-box w-52">
-                        <li><a className="justify-between"> Profile</a></li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
+                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                            <Link to='/'><li><a>Home</a></li></Link>
+                            <Link to='/dashboard'><li><a>Dashboard</a></li></Link>
+                            <Link><li onClick={handleLogout}><a>Logout</a></li></Link>
+                        </ul>
+                    </div></> : <Link to='/login'><a className="btn">Login</a></Link>}
                 </div>
-                </div>
-                
             </div>
+
         </div>
     );
 };
