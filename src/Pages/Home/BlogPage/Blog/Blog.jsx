@@ -1,6 +1,18 @@
+import { useState } from "react";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import BlogCard from "./BlogCard";
 
 
 const Blog = () => {
+    const axiosPublic = useAxiosPublic()
+    const [blogs,setBlogs] = useState([])
+
+    axiosPublic.get('/blog')
+    .then(res =>{
+        console.log(res.data)
+        setBlogs(res.data)
+    })
+
     return (
         <div className="">
             <div className="text-center">
@@ -53,17 +65,10 @@ const Blog = () => {
                         <p>Donor</p>
                     </div>
                 </div>
-                <div className="w-3/4 p-8">
-                    <div className="hero  bg-base-200">
-                        <div className="hero-content flex-col lg:flex-row">
-                            <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" className="max-w-sm rounded-lg shadow-2xl" />
-                            <div>
-                                <h1 className="text-5xl font-bold">Box Office News!</h1>
-                                <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                                <button className="btn btn-primary">Get Started</button>
-                            </div>
-                        </div>
-                    </div>
+                <div className="w-3/4 space-y-8 rounded-lg p-8">
+                    {
+                        blogs.map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
+                    }
                 </div>
             </div>
         </div>
