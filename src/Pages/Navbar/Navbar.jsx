@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom';
 import bloodWave from '../../assets/bloodWave.jpg'
 import useAuth from '../../Hooks/useAuth';
+import { LuLogOut } from "react-icons/lu";
+
 
 const Navbar = () => {
-    const { user , logOut} = useAuth()
+    const { user, logOut } = useAuth()
 
-    const handleLogout = ()=>{
+    const handleLogout = () => {
         logOut()
-        .then(result => {
-            console.log(result.user)
-        })
-        .catch(console.error(error))
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(console.error(error))
     }
     const Navlink = <>
         <Link><li><a>donation requests</a></li></Link>
@@ -41,13 +43,24 @@ const Navbar = () => {
                     {user ? <> <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component"  src={user?.photoURL} />
+                                <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
                             </div>
                         </div>
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                            <div className="avatar ">
+                                <div className="w-16 rounded-full ring mx-auto my-4 ring-primary ring-offset-base-100 ring-offset-2">
+                                    <img src={user?.photoURL} />
+                                </div>
+                            </div>
+                            <div className="text-center font-bold mb-4">
+                                <span>Welcome </span>
+                                {
+                                    user?.displayName ? user?.displayName : 'Back'
+                                }
+                            </div>
                             <Link to='/'><li><a>Home</a></li></Link>
-                            <Link to='/dashboard'><li><a>Dashboard</a></li></Link>
-                            <Link><li onClick={handleLogout}><a>Logout</a></li></Link>
+                            <Link to='/dashboard/homepage'><li><a>Dashboard</a></li></Link>
+                            <Link><li onClick={handleLogout}><a className='text-red-500'>Logout<LuLogOut className='mt-1'/></a></li></Link>
                         </ul>
                     </div></> : <Link to='/login'><a className="btn">Login</a></Link>}
                 </div>

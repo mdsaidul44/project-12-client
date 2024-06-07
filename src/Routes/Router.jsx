@@ -11,6 +11,8 @@ import BlogDetails from "../Pages/Home/BlogPage/Blog/BlogDetails/BlogDetails";
 import PrivateRouter from "./PrivateRouter";
 import Dashboard from "../Dashboard/Dashboard"; 
 import DonorHome from "../Dashboard/Donor/DonorHome";
+import MyRequest from "../Dashboard/Donor/MyRequest";
+import SentRequest from "../Dashboard/Donor/SentRequest";
 
 
   const router = createBrowserRouter([
@@ -48,8 +50,16 @@ import DonorHome from "../Dashboard/Donor/DonorHome";
       children:[
         // donor
         {
-          path: 'donorHome',
+          path: 'homepage',
           element: <DonorHome/>
+        },
+        {
+          path: 'myrequest',
+          element: <MyRequest/>
+        },
+        {
+          path: 'sentrequest',
+          element: <SentRequest/>
         }
       ] 
     }

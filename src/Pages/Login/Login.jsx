@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -13,6 +14,13 @@ const Login = () => {
         loginUser(data.email,data.password)
         .then(result => {
             console.log(result.user)
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User Login successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
             navigate('/')
         })
         .catch(error => {
@@ -24,6 +32,13 @@ const Login = () => {
         googleLogin()
         .then(result =>{
             console.log(result.user)
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User login successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
             navigate('/')
         })
         .catch(error =>{
