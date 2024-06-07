@@ -9,8 +9,8 @@ import Registration from "../Pages/Home/Registration/Registration";
 import Blog from "../Pages/Home/BlogPage/Blog/Blog";
 import BlogDetails from "../Pages/Home/BlogPage/Blog/BlogDetails/BlogDetails";
 import PrivateRouter from "./PrivateRouter";
-import Dashboard from "../Dashboard/Dashboard";
-import DonorHome from "../Dashboard/DonorDashboard/DonorHome";
+import Dashboard from "../Dashboard/Dashboard"; 
+import DonorHome from "../Dashboard/Donor/DonorHome";
 
 
   const router = createBrowserRouter([

@@ -1,30 +1,63 @@
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 
 
 
 
 const Registration = () => {
-    const {createUser} = useAuth()
-    const { register, handleSubmit, formState: { errors }, } = useForm()
+    const { createUser } = useAuth()
+    const { register, handleSubmit, reset, formState: { errors }, } = useForm()
+    const axiosPublic = useAxiosPublic()
+    const navigate = useNavigate()
     const onSubmit = (data) => {
         console.log(data)
-        createUser(data.email,data.password)
-        .then(result => {
-            console.log(result.user)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+        if (data.password !== data.confirmpassword) {
+            message.error("The passwords doesn't match")
+            return false;
+        }
+        createUser(data.email, data.password)
+            .then(result => {
+                console.log(result.user)
+
+                const userInfo = {
+                    name: data.name,
+                    email: data.email,
+                    upazila: data.upazila,
+                    district: data.district,
+                    group: data.group,
+                    file: data.file,
+                } 
+
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            console.log('user added to the database')
+                            reset()
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "User create successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            navigate('/')
+                        }
+                    })
+            })
+            .catch(error => {
+                console.log(error)
+            })
 
     }
 
     return (
         <div>
             <div className="text-center my-10 text-gray-300">
-            <h1 className="text-4xl font-semibold">Please Registration</h1>
+                <h1 className="text-4xl font-semibold">Please Registration</h1>
             </div>
             <div className="lg:flex   bg-slate-400 rounded-lg gap-2 p-6 ">
                 <div className="lg:w-1/2">
@@ -179,13 +212,26 @@ const Registration = () => {
                         </div>
                         <div>
                             <p className="font-semibold my-2">Password</p>
-                            <input type="password" className="w-full p-2  bg-gray-600 rounded" placeholder="Password" {...register("password", { required: true })} id="" /> <br />
-                            {errors.password && <small className="text-red-500" >Password field is required.</small>}
+                            <input type="password" className="w-full p-2  bg-gray-600 rounded" placeholder="Password" {...register("password", {
+                                    required: true,
+                                    minLength: 6,
+                                    maxLength: 20,
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                })} id="" /> <br />
+                            {errors.password?.type === "minLength" && (
+                                    <p className="text-red-600">Password Must be 6 Character</p>
+                                )}
+                                {errors.password?.type === "pattern" && (
+                                    <p className="text-red-600">Password Must have one uppercase one lowercase ,one number and one special character</p>
+                                )}
+                                {errors.password?.type === "maxLength" && (
+                                    <p className="text-red-600">Password Must be less then 20 Character</p>
+                                )}
                             <p className="font-semibold my-2">Confirm Password</p>
                             <input type="password" className="w-full p-2  bg-gray-600 rounded" placeholder="Confirm Password" {...register("confirmpassword", { required: true })} id="" /> <br />
                             {errors.confirmpassword && <small className="text-red-500">Confirm Password is required.</small>}
                         </div>
-                        <input className="btn w-full text-white btn-outline border-b-4 font-bold uppercase mt-6" type="submit" value='REGISTRATION'/>
+                        <input className="btn w-full text-white btn-outline border-b-4 font-bold uppercase mt-6" type="submit" value='REGISTRATION' />
                     </form>
                     <p className="mt-8">You have an Account Please <Link className="underline " to='/login'>Login</Link> </p>
                 </div>

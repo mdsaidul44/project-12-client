@@ -5,16 +5,15 @@ import { NavLink, Outlet } from "react-router-dom";
 
 
 const Dashboard = () => {
-    // const [isAdmin] = true
+    // const isAdmin = true
     return (
         <div className="flex">
             <div className="w-64 min-h-screen bg-gray-300">
                 <ul className="menu text-black">
 
                     <li><NavLink to='/dashboard/donorHome'><FaHome />Donor HOME</NavLink></li>
-                    <li><NavLink to='/dashboard/reservation'><FaCalendar />RESERVATION</NavLink></li>
-                    <li><NavLink to='/dashboard/paymentHistory'><FaAd />PAYMENT HISTORY</NavLink></li>
-                    <li><NavLink to='/dashboard/cart'><FaShoppingCart />MY CART  </NavLink></li>
+                    <li><NavLink to='/dashboard/reservation'><FaCalendar />Request</NavLink></li> 
+                    <li><NavLink to='/dashboard/cart'><FaShoppingCart /></NavLink></li>
                     <li><NavLink to='/dashboard/review'><FaMessage /> ADD REVIEW</NavLink></li>
                     <li><NavLink to='/dashboard/booking'><FaList />MY BOOKING</NavLink></li>
 
