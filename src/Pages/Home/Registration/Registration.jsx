@@ -7,14 +7,23 @@ import Swal from "sweetalert2";
 
 
 
-
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api =`https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 const Registration = () => {
     const { createUser } = useAuth()
     const { register, handleSubmit, reset, formState: { errors }, } = useForm()
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
-    const onSubmit = (data) => {
+    const onSubmit =async (data) => {
         console.log(data)
+
+        const imageFile = {image: data.file[0]}
+        const res = await axiosPublic.post(image_hosting_api,imageFile, {
+            headers: {
+                'content-type' : 'multipart/form-data'
+            }
+        });
+
         if (data.password !== data.confirmpassword) {
             message.error("The passwords doesn't match")
             return false;
@@ -29,7 +38,7 @@ const Registration = () => {
                     upazila: data.upazila,
                     district: data.district,
                     group: data.group,
-                    file: data.file,
+                    image: res.data.data.display_url
                 } 
 
                 axiosPublic.post('/users', userInfo)
