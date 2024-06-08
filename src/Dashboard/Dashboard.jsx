@@ -20,13 +20,13 @@ const Dashboard = () => {
                 <ul className="menu text-black">
                     <div className="avatar ">
                         <div className="w-24 rounded-full ring mx-auto my-4 ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src={item?.image} />
+                            <img src={user?.photoURL || 'https://i.ibb.co/DppxTgs/52d5d97dd7dd3125df4d7b45d55f2ce3.jpg'} />
                         </div> 
                     </div>
                     <div className="text-center font-bold mb-4">
                     <span>Welcome </span>
                         {
-                            item?.name ? item?.name : 'Back'
+                            item?.name ? user?.displayName : 'Back'
                         }
                     </div>
                     <li><NavLink to='/dashboard/homepage'><FaHome />HOME PAGE</NavLink></li>

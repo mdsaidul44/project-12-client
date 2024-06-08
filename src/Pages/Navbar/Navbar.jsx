@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 import bloodWave from '../../assets/bloodWave.jpg'
 import useAuth from '../../Hooks/useAuth';
 import { LuLogOut } from "react-icons/lu"; 
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import { useEffect } from 'react';
 
 const Navbar = () => {
     const { user, logOut } = useAuth() 
-
-
+    const axiosPublic = useAxiosPublic()
+      
 
     const handleLogout = () => {
         logOut()
@@ -16,7 +18,7 @@ const Navbar = () => {
             .catch(console.error(error))
     }
     const Navlink = <>
-        <Link to=''><li><a>donation requests</a></li></Link>
+        <Link to='/Alldonation'><li><a>donation requests</a></li></Link>
         <Link to='/blog'><li><a>Blog</a></li></Link>
         {/* <Link to='/dashboard'><li><a>Dashboard</a></li></Link> */}
     </>

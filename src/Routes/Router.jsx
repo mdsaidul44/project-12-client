@@ -14,7 +14,8 @@ import DonorHome from "../Dashboard/Donor/DonorHome";
 import MyRequest from "../Dashboard/Donor/MyRequest";
 import SentRequest from "../Dashboard/Donor/SentRequest"; 
 import EditRequest from "../Dashboard/Donor/EditRequest";
-import DetailsRequest from "../Dashboard/Donor/DetailsRequest";
+import DetailsRequest from "../Dashboard/Donor/DetailsRequest"; 
+import AllDonationRequest from "../components/AllDonaton/AllDonationRequest";
 
 
   const router = createBrowserRouter([
@@ -43,6 +44,10 @@ import DetailsRequest from "../Dashboard/Donor/DetailsRequest";
           path: 'blogdetails/:id',
           element: <BlogDetails/>,
           loader: ({params})=>fetch(`http://localhost:5000/blog/${params.id}`)
+        },
+        {
+          path: 'alldonation',
+          element: <AllDonationRequest/>
         }
       ]
     },
