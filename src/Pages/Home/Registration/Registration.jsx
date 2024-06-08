@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 const Registration = () => {
-    const { createUser, updateProfileUser } = useAuth()
+    const { createUser } = useAuth()
     const { register, handleSubmit, reset, formState: { errors }, } = useForm()
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
@@ -33,10 +33,7 @@ const Registration = () => {
                 setTimeout(() => {
                     window.location.reload();
                 }, 1000)
-                console.log(result.user)
-                updateProfileUser(data.name, data.image)
-                    .then(() => {
-                        console.log('user profile info update')
+                console.log(result.user)  
 
                         const userInfo = {
                             name: data.name,
@@ -63,7 +60,6 @@ const Registration = () => {
                                     navigate('/')
                                 }
                             })
-                    })
             }) 
             .catch(error => { console.log(error)  })
 
