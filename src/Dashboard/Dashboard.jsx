@@ -3,11 +3,14 @@ import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { BsFillRocketTakeoffFill } from "react-icons/bs";
 import { BsSendCheckFill } from "react-icons/bs";
+import useUser from "../Hooks/useUser";
 
 
 
 const Dashboard = () => {
     const { user } = useAuth()
+    const [users] = useUser()
+    const item = users.find(data => data)
     const isDonor = true
     const isVolunteer = true
     const isAdmin = true
@@ -17,18 +20,18 @@ const Dashboard = () => {
                 <ul className="menu text-black">
                     <div className="avatar ">
                         <div className="w-24 rounded-full ring mx-auto my-4 ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src={user?.photoURL} />
+                            <img src={item?.image} />
                         </div> 
                     </div>
                     <div className="text-center font-bold mb-4">
                     <span>Welcome </span>
                         {
-                            user?.displayName ? user?.displayName : 'Back'
+                            item?.name ? item?.name : 'Back'
                         }
                     </div>
                     <li><NavLink to='/dashboard/homepage'><FaHome />HOME PAGE</NavLink></li>
                     <li><NavLink to='/dashboard/sentrequest'><BsFillRocketTakeoffFill />Sent Request</NavLink></li>
-                    <li><NavLink to='/dashboard/myrequest'><BsSendCheckFill/>My Request</NavLink></li>
+                    <li><NavLink to='/dashboard/myrequest'><BsSendCheckFill/>My Request</NavLink></li> 
 
 
                     {/* {role === "a" ?

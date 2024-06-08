@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import bloodWave from '../../assets/bloodWave.jpg'
 import useAuth from '../../Hooks/useAuth';
-import { LuLogOut } from "react-icons/lu";
-
+import { LuLogOut } from "react-icons/lu"; 
 
 const Navbar = () => {
-    const { user, logOut } = useAuth()
+    const { user, logOut } = useAuth() 
+
+
 
     const handleLogout = () => {
         logOut()
@@ -15,7 +16,7 @@ const Navbar = () => {
             .catch(console.error(error))
     }
     const Navlink = <>
-        <Link><li><a>donation requests</a></li></Link>
+        <Link to=''><li><a>donation requests</a></li></Link>
         <Link to='/blog'><li><a>Blog</a></li></Link>
         {/* <Link to='/dashboard'><li><a>Dashboard</a></li></Link> */}
     </>
@@ -43,13 +44,13 @@ const Navbar = () => {
                     {user ? <> <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+                                <img alt="Tailwind CSS Navbar component" src={ user?.photoURL || 'https://i.ibb.co/DppxTgs/52d5d97dd7dd3125df4d7b45d55f2ce3.jpg'} />
                             </div>
                         </div>
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                             <div className="avatar ">
                                 <div className="w-16 rounded-full ring mx-auto my-4 ring-primary ring-offset-base-100 ring-offset-2">
-                                    <img src={user?.photoURL} />
+                                    <img src={  user?.photoURL || 'https://i.ibb.co/DppxTgs/52d5d97dd7dd3125df4d7b45d55f2ce3.jpg'} />
                                 </div>
                             </div>
                             <div className="text-center font-bold mb-4">

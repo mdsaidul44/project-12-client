@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import BlogCard from "./BlogCard";
 
@@ -7,11 +7,13 @@ const Blog = () => {
     const axiosPublic = useAxiosPublic()
     const [blogs,setBlogs] = useState([])
 
+   useEffect(()=>{
     axiosPublic.get('/blog')
     .then(res =>{
         console.log(res.data)
         setBlogs(res.data)
     })
+   },[])
 
     return (
         <div className="">

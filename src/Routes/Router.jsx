@@ -12,7 +12,9 @@ import PrivateRouter from "./PrivateRouter";
 import Dashboard from "../Dashboard/Dashboard"; 
 import DonorHome from "../Dashboard/Donor/DonorHome";
 import MyRequest from "../Dashboard/Donor/MyRequest";
-import SentRequest from "../Dashboard/Donor/SentRequest";
+import SentRequest from "../Dashboard/Donor/SentRequest"; 
+import EditRequest from "../Dashboard/Donor/EditRequest";
+import DetailsRequest from "../Dashboard/Donor/DetailsRequest";
 
 
   const router = createBrowserRouter([
@@ -60,6 +62,16 @@ import SentRequest from "../Dashboard/Donor/SentRequest";
         {
           path: 'sentrequest',
           element: <SentRequest/>
+        },
+        {
+          path: 'editrequests/:id',
+          element: <EditRequest/>,
+          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
+        },
+        {
+          path: 'details/:id',
+          element: <DetailsRequest/>,
+          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
         }
       ] 
     }

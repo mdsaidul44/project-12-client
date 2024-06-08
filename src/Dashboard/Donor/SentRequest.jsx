@@ -1,13 +1,45 @@
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth"; 
 
 
 const SentRequest = () => {
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
+    const {user}= useAuth()  
+    
 
     const onSubmit = async (data) => {
         console.log(data)
+        const requestInfo = {
+            requesterName: data.RequesterName,
+            requesterEmail: data.RequesterEmail,
+            recipientName: data.recipientName,
+            recipientAddress: data.recipientAddress,
+            hospital: data.hospital,
+            district: data.district,
+            upazila: data.upazila,
+            donationDate: data.donationDate,
+            donationTime: data.donationTime,
+            bloodGroup: data.bloodGroup,
+            requestMessage: data.requestMessage,
+            status: "pending"
+        }
+
+        axiosPublic.post('/request',requestInfo)
+        .then(res=> {
+            if(res.data.insertedId){
+                reset()
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Request sent successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        })
     }
     return (
         <div>
@@ -20,13 +52,13 @@ const SentRequest = () => {
                         <div className="label">
                             <span className="label-text">Requester Name</span>
                         </div>
-                        <input {...register("RequesterName", { required: true })} type="text" placeholder="Requester Name" className="input input-bordered w-full " required />
+                        <input {...register("RequesterName", { required: true })} type="text" placeholder="Requester Name" defaultValue={user?.displayName } className="input input-bordered w-full " required />
                     </label>
                     <label className="form-control w-full my-6">
                         <div className="label">
                             <span className="label-text">Requester Email</span>
                         </div>
-                        <input {...register("RequesterEmail", { required: true })} type="email" placeholder="Requester Email" className="input input-bordered w-full " required />
+                        <input {...register("RequesterEmail", { required: true })} type="email" placeholder="Requester Email" defaultValue={  user?.email}  className="input input-bordered w-full " required />
                     </label>
                 </div>
                 <div className="flex gap-6">

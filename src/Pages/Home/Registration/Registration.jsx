@@ -8,19 +8,19 @@ import Swal from "sweetalert2";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api =`https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 const Registration = () => {
-    const { createUser } = useAuth()
+    const { createUser, updateProfileUser } = useAuth()
     const { register, handleSubmit, reset, formState: { errors }, } = useForm()
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
-    const onSubmit =async (data) => {
+    const onSubmit = async (data) => {
         console.log(data)
 
-        const imageFile = {image: data.file[0]}
-        const res = await axiosPublic.post(image_hosting_api,imageFile, {
+        const imageFile = { image: data.file[0] }
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
-                'content-type' : 'multipart/form-data'
+                'content-type': 'multipart/form-data'
             }
         });
 
@@ -30,36 +30,42 @@ const Registration = () => {
         }
         createUser(data.email, data.password)
             .then(result => {
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000)
                 console.log(result.user)
+                updateProfileUser(data.name, data.image)
+                    .then(() => {
+                        console.log('user profile info update')
 
-                const userInfo = {
-                    name: data.name,
-                    email: data.email,
-                    upazila: data.upazila,
-                    district: data.district,
-                    group: data.group,
-                    image: res.data.data.display_url
-                } 
-
-                axiosPublic.post('/users', userInfo)
-                    .then(res => {
-                        if (res.data.insertedId) {
-                            console.log('user added to the database')
-                            reset()
-                            Swal.fire({
-                                position: "top-end",
-                                icon: "success",
-                                title: "User create successfully",
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            navigate('/')
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                            upazila: data.upazila,
+                            district: data.district,
+                            group: data.group,
+                            image: res.data.data.display_url
                         }
+
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database')
+                                    reset()
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        title: "User create successfully",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/')
+                                }
+                            })
                     })
-            })
-            .catch(error => {
-                console.log(error)
-            })
+            }) 
+            .catch(error => { console.log(error)  })
 
     }
 
@@ -129,7 +135,7 @@ const Registration = () => {
                                 <div>
                                     <select {...register("group", { required: true })} className="select select-bordered lg:w-44 w-full  bg-gray-600 ">
                                         <option disabled selected></option>
-                                        <option>A+</option>
+                                        <option value="A+">A+</option>
                                         <option>A-</option>
                                         <option>B+</option>
                                         <option>B-</option>
@@ -222,20 +228,20 @@ const Registration = () => {
                         <div>
                             <p className="font-semibold my-2">Password</p>
                             <input type="password" className="w-full p-2  bg-gray-600 rounded" placeholder="Password" {...register("password", {
-                                    required: true,
-                                    minLength: 6,
-                                    maxLength: 20,
-                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                                })} id="" /> <br />
+                                required: true,
+                                minLength: 6,
+                                maxLength: 20,
+                                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                            })} id="" /> <br />
                             {errors.password?.type === "minLength" && (
-                                    <p className="text-red-600">Password Must be 6 Character</p>
-                                )}
-                                {errors.password?.type === "pattern" && (
-                                    <p className="text-red-600">Password Must have one uppercase one lowercase ,one number and one special character</p>
-                                )}
-                                {errors.password?.type === "maxLength" && (
-                                    <p className="text-red-600">Password Must be less then 20 Character</p>
-                                )}
+                                <p className="text-red-600">Password Must be 6 Character</p>
+                            )}
+                            {errors.password?.type === "pattern" && (
+                                <p className="text-red-600">Password Must have one uppercase one lowercase ,one number and one special character</p>
+                            )}
+                            {errors.password?.type === "maxLength" && (
+                                <p className="text-red-600">Password Must be less then 20 Character</p>
+                            )}
                             <p className="font-semibold my-2">Confirm Password</p>
                             <input type="password" className="w-full p-2  bg-gray-600 rounded" placeholder="Confirm Password" {...register("confirmpassword", { required: true })} id="" /> <br />
                             {errors.confirmpassword && <small className="text-red-500">Confirm Password is required.</small>}
