@@ -7,13 +7,14 @@ const useVolunteer = () => {
     const { user, loading } = useAuth()
     const axiosSecure = useAxiosSecure()
     const { data: isVolunteer, isPending: isVolunteerLoading } = useQuery({
-        queryKey: [user?.email, 'isVolunteer'],
+        queryKey: ['isVolunteer'],
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure.get(`/user/volunteer/${user.email}`)
             console.log('user volunteer', res.data)
         }
     })
+    console.log('this is volunteer ',isVolunteer)
     return [isVolunteer, isVolunteerLoading]
 };
 

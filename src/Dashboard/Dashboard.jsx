@@ -3,24 +3,30 @@ import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { BsFillRocketTakeoffFill } from "react-icons/bs";
 import { BsSendCheckFill } from "react-icons/bs";
-import useUser from "../Hooks/useUser";
-import useVolunteer from "../Hooks/useVolunteer";
+import useUser from "../Hooks/useUser"; 
 import useAdmin from "../Hooks/useAdmin";
 import { MdOutlineManageSearch } from "react-icons/md";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 
 const Dashboard = () => {
-    const { user } = useAuth()
-    console.log("this is user", user)
+    const { user } = useAuth() 
     const [users] = useUser()
-    const item = users.find(data => data)
-    const Admin = true
-    const Volunteer = false
-    const [isAdmin] = useAdmin()
-    // console.log("this is admin", isAdmin)
-    const [isVolunteer] = useVolunteer()
-    console.log("this is volunteer",isVolunteer)
+    const axiosSecure = useAxiosSecure()
+    const [isVolunteer,setIsVolunteer] = useState([]) 
+    const item = users.find(data => data) 
+    const [isAdmin] = useAdmin() 
+
+    useEffect(()=>{
+        axiosSecure.get(`/user/volunteer/${user.email}`)
+        .then(res=> {
+            console.log("Volunteer user",res.data)
+            setIsVolunteer(res.data)
+        })
+    },[])
+
     return (
         <div className="flex">
             <div className="w-64 min-h-screen bg-gray-300">
@@ -46,9 +52,9 @@ const Dashboard = () => {
                             <li><NavLink to='/dashboard/allrequest'><BsSendCheckFill />ALL REQUEST</NavLink></li> 
                             <li><NavLink to='/dashboard/contentmanage'><MdOutlineManageSearch />CONTENT MANAGEMENT</NavLink></li>
                         </>
-                        : isVolunteer === 'volunteer' ?
+                        : isVolunteer  ?
                             <>
-                                <li><NavLink to='/dashboard/volunteerhome'><FaHome />/VOLUNTEER HOME </NavLink></li>
+                                <li><NavLink to='/dashboard/volunteerhome'><FaHome />VOLUNTEER HOME </NavLink></li>
                                 <li><NavLink to='/dashboard/sentrequest'><BsFillRocketTakeoffFill />Sent Request</NavLink></li>
                                 <li><NavLink to='/dashboard/myrequest'><BsSendCheckFill />My Request</NavLink></li>
                             </>

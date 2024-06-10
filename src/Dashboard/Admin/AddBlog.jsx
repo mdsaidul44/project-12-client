@@ -1,13 +1,15 @@
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
  
 const AddBlog = () => {
     const { register, handleSubmit, reset } = useForm()
+    const axiosPublic = useAxiosPublic()
     const onSubmit = async (data) => {
-
+        
     }
     return (
-        <div> 
-            <div className="flex bg-slate-50 rounded-lg">
+        <div > 
+            <div className="flex bg-slate-50 pt-20 rounded-lg">
                 <div className="w-1/2">
                     <img className="rounded-lg" src="https://i.ibb.co/RBSCJjL/4262873-2262375.jpg" alt="" />
                 </div>
@@ -37,7 +39,7 @@ const AddBlog = () => {
                             </div>
                             <textarea  {...register('content')} className="textarea textarea-bordered h-24  text-black placeholder:text-black bg-gray-400" placeholder="Content Text"></textarea>
                         </label>
-                        <input type="submit" className="w-full border-0 btn-secondary btn-outline border-b-4 btn mt-4 font-bold uppercase " value="Update" />
+                        <input type="submit" className="w-full border-0  btn-primary btn-outline border-b-4 btn mt-4 font-bold uppercase " value="Upload" />
                     </form>
                 </div>
             </div>
