@@ -36,12 +36,12 @@ const Blog = () => {
                     <p>"Hematology Horizon: Illuminating the Depths of Blood's Domain" - Venture into the vast expanse of blood's realm, where every beat holds the key to understanding life's most profound mysteries. Join us as we traverse the hemispheres of health, science, and the human condition, uncovering the boundless wonders that flow within us.</p>
                 </div>
             </div>
-            <div className="flex justify-evenly bg-slate-300 text-black gap-60 rounded-lg mt-20 p-4 ">
-                <h1 className="text-3xl -ml-28 font-semibold">Category:</h1>
+            <div className="lg:flex justify-evenly bg-slate-300 text-black gap-60 rounded-lg mt-20 p-4 ">
+                <h1 className="text-3xl lg:-ml-28 font-semibold">Category:</h1>
                 <h1 className="text-3xl font-semibold">Total Blog : {blogs.length}</h1>  
-                   <Link to='/addblog'><button className="btn-outline p-2  -mr-20 btn-primary rounded-lg font-bold  border-b-2">Add New Blog</button> </Link>  
+                   <Link to='/addblog'><button className="btn-outline p-2  lg:-mr-20 btn-primary rounded-lg font-bold  border-b-2">Add New Blog</button> </Link>  
             </div>
-            <div className="flex">
+            <div className="lg:flex">
                 <div className="w-1/4 p-8 space-y-4">
                     <p className="font-semibold text-xl">Categories</p>
                     <div className="flex gap-4 ">
@@ -69,7 +69,7 @@ const Blog = () => {
                         <p>Donor</p>
                     </div>
                 </div>
-                <div className="w-3/4 space-y-8 rounded-lg p-8">
+                <div className="lg:w-3/4 space-y-8 rounded-lg p-8">
                     {
                         blogs.map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
                     }

@@ -28,8 +28,8 @@ const Dashboard = () => {
     },[])
 
     return (
-        <div className="flex">
-            <div className="w-64 min-h-screen bg-gray-300">
+        <div className="lg:flex">
+            <div className="lg:w-64 min-h-screen bg-gray-300">
                 <ul className="menu text-black">
                     <div className="avatar ">
                         <div className="w-24 rounded-full ring mx-auto my-4 ring-primary ring-offset-base-100 ring-offset-2">

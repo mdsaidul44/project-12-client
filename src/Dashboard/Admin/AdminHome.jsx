@@ -22,7 +22,7 @@ const AdminHome = () => {
     }, [])
     return (
         <div className='bg-slate-50 p-4 rounded-lg text-black'>
-            <div className='flex justify-between'>
+            <div className='lg:flex justify-between'>
                 <div>
                     <h1 className='text-stone-800 font-bold'>Dashboard</h1>
                     <p className='flex gap-2 font-semibold'>Home <FaAngleRight className='mt-1.5' /> Dashboard</p>
@@ -33,30 +33,30 @@ const AdminHome = () => {
             </div>
             <div className='divider'></div>
             <div>
-                <div className="stats shadow "> 
+                <div className="lg:stats sm:stats shadow "> 
                     <div className="stat">
                         <div className="stat-figure text-2xl text-red-600">
                             <BiDonateBlood /> 
                         </div>
-                        <div className="stat-title">Total Donors</div>
+                        <div className="lg:stat-title ">Total Donors</div>
                         <div className="stat-value">{users.length}</div>
-                        <div className="stat-desc">Jan 1st - Feb 1st</div>
+                        <div className="lg:stat-desc">Jan 1st - Feb 1st</div>
                     </div> 
                     <div className="stat">
                         <div className="stat-figure text-2xl text-red-600">
                         <VscGitPullRequestGoToChanges/>
                         </div>
-                        <div className="stat-title">Total Donor Requests</div>
+                        <div className="lg:stat-title">Total Donor Requests</div>
                         <div className="stat-value">{requests.length}</div>
-                        <div className="stat-desc">↗︎ 400 (22%)</div>
+                        <div className="lg:stat-desc">↗︎ 400 (22%)</div>
                     </div> 
                     <div className="stat">
                         <div className="stat-figure text-secondary">
                             <HiCurrencyDollar/>
                         </div>
-                        <div className="stat-title">Total Amount</div>
+                        <div className="lg:stat-title">Total Amount</div>
                         <div className="stat-value">1,200</div>
-                        <div className="stat-desc">↘︎ 90 (14%)</div>
+                        <div className="lg:stat-desc">↘︎ 90 (14%)</div>
                     </div>
 
                 </div>

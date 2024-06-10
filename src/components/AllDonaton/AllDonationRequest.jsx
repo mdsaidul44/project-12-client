@@ -21,7 +21,7 @@ const AllDonationRequest = () => {
                 <h1 className='text-3xl text-center font-bold  pt-32 pb-10 text-sky-200 underline'>All Request Page</h1>
             </div>
             <div className="overflow-x-auto ">
-                <table className="table text-xl">
+                <table className=" table text-xl">
                     {/* head */}
                     <thead>
                         <tr className='text-white'>
@@ -55,7 +55,7 @@ const AllDonationRequest = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    <div className="flex items-center gap-3">
+                                    <div className="lg:flex items-center gap-3">
                                         <div>
                                             <div className="font-semibold">{request.recipientAddress}</div>
                                             <div className="text-sm my-1">District: {request.district} </div>
