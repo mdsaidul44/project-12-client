@@ -5,27 +5,31 @@ import { BsFillRocketTakeoffFill } from "react-icons/bs";
 import { BsSendCheckFill } from "react-icons/bs";
 import useUser from "../Hooks/useUser"; 
 import useAdmin from "../Hooks/useAdmin";
-import { MdOutlineManageSearch } from "react-icons/md";
-import { useEffect, useState } from "react";
+import { MdOutlineManageSearch } from "react-icons/md"; 
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useVolunteer from "../Hooks/useVolunteer";
 
 
 
 const Dashboard = () => {
     const { user } = useAuth() 
     const [users] = useUser()
+    console.log(users)
     const axiosSecure = useAxiosSecure()
-    const [isVolunteer,setIsVolunteer] = useState([]) 
+    // const [isVolunteer,setIsVolunteer] = useState() 
+    // console.log('isVolunteer',isVolunteer)
     const item = users.find(data => data) 
     const [isAdmin] = useAdmin() 
+    const [isVolunteer]= useVolunteer() 
 
-    useEffect(()=>{
-        axiosSecure.get(`/user/volunteer/${user.email}`)
-        .then(res=> {
-            console.log("Volunteer user",res.data)
-            setIsVolunteer(res.data)
-        })
-    },[])
+
+    // useEffect(()=>{
+    //     axiosSecure.get(`/user/volunteer/${user.email}`)
+    //     .then(res=> {
+    //         console.log("Volunteer user",res.data)
+    //         setIsVolunteer(res.data)
+    //     })
+    // },[])
 
     return (
         <div className="lg:flex">

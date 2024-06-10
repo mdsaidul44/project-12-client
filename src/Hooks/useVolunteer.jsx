@@ -8,10 +8,10 @@ const useVolunteer = () => {
     const axiosSecure = useAxiosSecure()
     const { data: isVolunteer, isPending: isVolunteerLoading } = useQuery({
         queryKey: ['isVolunteer'],
-        enabled: !loading,
+        enabled: !loading && !!user?.email,
         queryFn: async () => {
             const res = await axiosSecure.get(`/user/volunteer/${user.email}`)
-            console.log('user volunteer', res.data)
+            return res.data
         }
     })
     console.log('this is volunteer ',isVolunteer)

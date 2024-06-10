@@ -1,11 +1,43 @@
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
  
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 const AddBlog = () => {
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
     const onSubmit = async (data) => {
-        
+
+        const imageFile = { image: data.file[0] }
+        const res = await axiosPublic.post(image_hosting_api, imageFile, { 
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }); 
+ 
+        const blogInfo = {
+            title: data.title,
+            image: res.data.data.file,
+            content: data.content,
+            status: "Dreft"
+        }
+
+        axiosPublic.post('/blog',blogInfo)
+        .then(res=> {
+            if(res.data.insertedId){
+                reset()
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Add blog successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        })
+
     }
     return (
         <div > 
@@ -29,7 +61,7 @@ const AddBlog = () => {
                                 <div className="label">
                                     <span className="label-text text-black">Image File</span>
                                 </div>
-                                <input type="file" {...register("image", { required: true })} className="file-input w-full   bg-gray-400" />
+                                <input type="file" {...register("file", { required: true })} className="file-input w-full   bg-gray-400" />
                             </label>
                         </div>
                         {/* description box */}

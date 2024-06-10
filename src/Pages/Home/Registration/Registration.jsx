@@ -30,9 +30,9 @@ const Registration = () => {
         }
         createUser(data.email, data.password)
             .then(result => {
-                setTimeout(() => {
-                    window.location.reload();
-                }, 1000)
+                // setTimeout(() => {
+                //     window.location.reload();
+                // }, 1000)
                 console.log(result.user)  
 
                         const userInfo = {
