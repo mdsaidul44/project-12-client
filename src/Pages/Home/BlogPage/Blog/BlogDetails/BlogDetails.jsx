@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { FcReading } from "react-icons/fc";
 
 
@@ -22,7 +22,7 @@ const BlogDetails = () => {
             </div>
             <div className="bg-slate-50 mt-6 rounded-lg p-6"> 
                     <img className="h-60 w-72 rounded-lg" src={img} alt="" />
-                    <button className="btn-outline p-2 mt-4 btn-primary rounded-lg font-bold  border-b-2">Add New Blog</button> 
+                    <Link to='/addblog'><button className="btn-outline p-2 mt-4 btn-primary rounded-lg font-bold  border-b-2">Add New Blog</button> </Link>
                 <p className="text-black text-xl mt-6">{description}</p>
             </div>
         </div>

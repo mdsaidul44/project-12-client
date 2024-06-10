@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import BlogCard from "./BlogCard";
+import { Link } from "react-router-dom";
 
 
 const Blog = () => {
     const axiosPublic = useAxiosPublic()
-    const [blogs,setBlogs] = useState([])
+    const [blogs, setBlogs] = useState([])
 
-   useEffect(()=>{
-    axiosPublic.get('/blog')
-    .then(res =>{
-        console.log(res.data)
-        setBlogs(res.data)
-    })
-   },[])
+    useEffect(() => {
+        axiosPublic.get('/blog')
+            .then(res => {
+                console.log(res.data)
+                setBlogs(res.data)
+            })
+    }, [])
 
     return (
         <div className="">
@@ -35,9 +36,10 @@ const Blog = () => {
                     <p>"Hematology Horizon: Illuminating the Depths of Blood's Domain" - Venture into the vast expanse of blood's realm, where every beat holds the key to understanding life's most profound mysteries. Join us as we traverse the hemispheres of health, science, and the human condition, uncovering the boundless wonders that flow within us.</p>
                 </div>
             </div>
-            <div className="flex bg-slate-300 text-black gap-60 rounded-lg mt-20 p-4 ">
-                <h1 className="text-3xl font-semibold">Category:</h1>
-                <h1 className="text-3xl font-semibold">Total Blog</h1>
+            <div className="flex justify-evenly bg-slate-300 text-black gap-60 rounded-lg mt-20 p-4 ">
+                <h1 className="text-3xl -ml-28 font-semibold">Category:</h1>
+                <h1 className="text-3xl font-semibold">Total Blog : {blogs.length}</h1>  
+                   <Link to='/addblog'><button className="btn-outline p-2  -mr-20 btn-primary rounded-lg font-bold  border-b-2">Add New Blog</button> </Link>  
             </div>
             <div className="flex">
                 <div className="w-1/4 p-8 space-y-4">

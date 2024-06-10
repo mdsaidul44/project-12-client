@@ -16,7 +16,15 @@ import SentRequest from "../Dashboard/Donor/SentRequest";
 import EditRequest from "../Dashboard/Donor/EditRequest";
 import DetailsRequest from "../Dashboard/Donor/DetailsRequest"; 
 import AllDonationRequest from "../components/AllDonaton/AllDonationRequest";
-
+import AdminHome from "../Dashboard/Admin/AdminHome";
+import AllUsersPage from "../Dashboard/Admin/AllUsersPage";
+import AddBlog from "../Dashboard/Admin/AddBlog";
+import AllRequest from "../Dashboard/Admin/AllRequest";
+import AdminRouter from "./AdminRouter";
+import VolunteerHome from "../Dashboard/Volunteer/VolunteerHome";
+import VolunteerRouter from './VolunteerRouter';
+import ContentManage from "../Dashboard/Admin/ContentManage";
+ 
 
   const router = createBrowserRouter([
     {
@@ -48,6 +56,10 @@ import AllDonationRequest from "../components/AllDonaton/AllDonationRequest";
         {
           path: 'alldonation',
           element: <AllDonationRequest/>
+        },
+        {
+          path: 'addblog',
+          element: <PrivateRouter><AddBlog/></PrivateRouter>
         }
       ]
     },
@@ -77,6 +89,28 @@ import AllDonationRequest from "../components/AllDonaton/AllDonationRequest";
           path: 'details/:id',
           element: <DetailsRequest/>,
           loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
+        }, 
+        // admin user
+        {
+          path: 'adminhome',
+          element:<AdminRouter><AdminHome/></AdminRouter>
+        },
+        {
+          path: 'allusers', 
+          element: <AdminRouter><AllUsersPage/></AdminRouter>
+        },
+        {
+          path:'allrequest',
+          element:<AdminRouter><AllRequest/></AdminRouter>
+        },
+        {
+          path: 'contentmanage',
+          element:<AdminRouter><ContentManage/></AdminRouter>
+        },
+        // volunteer user
+        {
+          path:'volunteerhome',
+          element: <VolunteerRouter><VolunteerHome/></VolunteerRouter>
         }
       ] 
     }
