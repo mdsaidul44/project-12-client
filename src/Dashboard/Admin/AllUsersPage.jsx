@@ -122,14 +122,14 @@ const AllUsersPage = () => {
     }
 
     return (
-        <div className='p-4 bg-gray-900 rounded-lg '>
-            <div className='flex justify-between  bg-slate-800 p-4 rounded-lg'>
-                <div>
-                    <h1 className='text-stone-400 font-bold'>Dashboard</h1>
+        <div className='p-4 bg-gray-700 rounded-lg '>
+            <div className='flex justify-between shadow-lg shadow-black bg-slate-800 p-4 rounded-lg'>
+                <div className='shadow-lg shadow-slate-500 p-2'>
+                    <h1 className='text-stone-400 font-bold'>Admin / Dashboard</h1>
                     <p className='flex gap-2 font-semibold'>Home <FaAngleRight className='mt-1.5' /> Dashboard</p>
                 </div>
                 <div>
-                    <h1 className='text-2xl font-bold text-stone-400 uppercase p-4 text-center'> All User: {users.length}</h1>
+                    <h1 className='text-2xl font-bold shadow-lg shadow-slate-500 text-stone-400 uppercase p-4 text-center'> All User: {users.length}</h1>
                 </div>
             </div>
             <div className='divider'></div>

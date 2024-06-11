@@ -27,6 +27,7 @@ import ContentManage from "../Dashboard/Admin/ContentManage";
 import UpdateBlog from "../Dashboard/Admin/UpdateBlog";
 import Contact from "../Dashboard/Admin/Contact";
 import AllDonorReq from "../Dashboard/Volunteer/AllDonorReq";
+import VolunteerContentManag from "../Dashboard/Volunteer/VolunteerContentManag";
  
 
   const router = createBrowserRouter([
@@ -127,6 +128,10 @@ import AllDonorReq from "../Dashboard/Volunteer/AllDonorReq";
         {
           path: 'alldonor',
           element: <VolunteerRouter><AllDonorReq/></VolunteerRouter>
+        },
+        {
+          path: 'volunteerManage',
+          element: <VolunteerRouter><VolunteerContentManag/></VolunteerRouter>
         }
       ] 
     }

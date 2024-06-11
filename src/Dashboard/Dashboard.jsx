@@ -8,6 +8,7 @@ import useAdmin from "../Hooks/useAdmin";
 import { MdOutlineManageSearch } from "react-icons/md";  
 import useVolunteer from "../Hooks/useVolunteer"; 
 import { BiSolidContact } from "react-icons/bi";
+import { SiAwssecretsmanager } from "react-icons/si";
 
 
 
@@ -41,16 +42,16 @@ const Dashboard = () => {
 
                     {isAdmin  ?
                         <>
-                            <li><NavLink to='/dashboard/adminhome'><FaHome />ADMIN HOME </NavLink></li>
-                            <li><NavLink to='/dashboard/allusers'><FaUsers />ALL USERS</NavLink></li>
-                            <li><NavLink to='/dashboard/allrequest'><BsSendCheckFill />ALL REQUEST</NavLink></li>  
-                            <li><NavLink to='/dashboard/contentmanage'><MdOutlineManageSearch />CONTENT MANAGEMENT</NavLink></li>
+                            <li className="font-bold shadow-lg hover:shadow-black mt-4 mb-2 rounded-lg"><NavLink to='/dashboard/adminhome'><FaHome />ADMIN HOME </NavLink></li>
+                            <li className="font-bold shadow-lg hover:shadow-black mt-4 mb-2 rounded-lg"><NavLink to='/dashboard/allusers'><FaUsers />ALL USERS</NavLink></li>
+                            <li className="font-bold shadow-lg hover:shadow-black mt-4 mb-2 rounded-lg"><NavLink to='/dashboard/allrequest'><BsSendCheckFill />ALL REQUEST</NavLink></li>  
+                            <li className="font-bold shadow-lg hover:shadow-black mt-4 mb-2 rounded-lg"><NavLink to='/dashboard/contentmanage'><MdOutlineManageSearch />CONTENT MANAGEMENT</NavLink></li>
                         </>
                         : isVolunteer  ?
                             <>
                                 <li className="font-bold shadow-lg hover:shadow-black mt-4 mb-2 rounded-lg"><NavLink to='/dashboard/volunteerhome'><FaHome />VOLUNTEER HOME </NavLink></li>
                                 <li className="font-bold shadow-lg mb-2 hover:shadow-black rounded-lg"><NavLink to='/dashboard/alldonor'><BsFillRocketTakeoffFill />ALL DONOR REQUEST</NavLink></li>
-                                <li className="font-bold mb-2 rounded-lg shadow-lg hover:shadow-black"><NavLink to='/dashboard/myrequest'><BsSendCheckFill />My Request</NavLink></li>
+                                <li className="font-bold mb-2 rounded-lg shadow-lg hover:shadow-black"><NavLink to='/dashboard/volunteerManage'><SiAwssecretsmanager />CONTENT MANAGEMENT</NavLink></li>
                             </>
                             : user &&
                             <>

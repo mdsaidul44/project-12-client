@@ -22,18 +22,18 @@ const AdminHome = () => {
     }, [])
     return (
         <div className='bg-slate-600 p-4 rounded-lg text-black'>
-            <div className='lg:flex justify-between bg-slate-800 rounded-lg p-4 mb-10'>
-                <div>
-                    <h1 className='text-slate-100 font-bold'>Dashboard</h1>
+            <div className='lg:flex shadow-md shadow-black justify-between bg-slate-800 rounded-lg p-4 mb-10'>
+                <div className='shadow-lg shadow-black p-2'>
+                    <h1 className='text-slate-100 font-bold'>Admin / Dashboard</h1>
                     <p className='flex gap-2 font-semibold text-slate-400'>Home <FaAngleRight className='mt-1.5' /> Dashboard</p>
                 </div>
                 <div>
-                    <h1 className='text-2xl font-bold text-stone-400 uppercase p-4 text-center'>Welcome {user?.displayName ? user?.displayName : 'Back'}</h1>
+                    <h1 className='text-2xl shadow-lg shadow-black font-bold text-stone-400 uppercase p-4 text-center'>Welcome {user?.displayName ? user?.displayName : 'Back'}</h1>
                 </div>
             </div>
             <div className='divider'></div>
             <div>
-                <div className="lg:stats sm:stats shadow "> 
+                <div className="lg:stats sm:stats shadow-lg shadow-slate-900 "> 
                     <div className="stat">
                         <div className="stat-figure text-2xl text-red-600">
                             <BiDonateBlood /> 
