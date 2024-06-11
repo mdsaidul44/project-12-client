@@ -7,12 +7,58 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 
 
-const AllUsersPage = () => { 
+const AllUsersPage = () => {
     const axiosSecure = useAxiosSecure()
     const [users, loading, refetch] = useUser()
     // console.log(users)
 
+    // user status block 
+    const handleBlockUser = async (data) => {
 
+        const userBlock = {
+            status: 'Block'
+        }
+        await axiosSecure.patch(`/user/${data._id}`, userBlock)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    // show success popup 
+                    refetch()
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: 'User Block Successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+
+    }
+
+    // user unblock toggle
+    const handleUnBlockUser = async (data) => {
+
+        const userBlock = {
+            status: 'active'
+        }
+        await axiosSecure.patch(`/user/${data._id}`, userBlock)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    // show success popup 
+                    refetch()
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: 'User UnBlock Successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+
+    }
+
+    // make admin toggle
     const handleMakeAdmin = (users) => {
         axiosSecure.patch(`/users/admin/${users._id}`)
             .then(res => {
@@ -30,11 +76,10 @@ const AllUsersPage = () => {
             })
     }
 
-
+    // Make volunteer toggle
     const handleMakeVolunteer = (users) => {
         axiosSecure.patch(`/users/volunteer/${users._id}`)
             .then(res => {
-                console.log(res.data)
                 if (res.data.modifiedCount > 0) {
                     refetch()
                     Swal.fire({
@@ -48,6 +93,7 @@ const AllUsersPage = () => {
             })
     }
 
+    // user delete toggle
     const handleDeleteUser = (users) => {
         Swal.fire({
             title: "Are you sure?",
@@ -59,7 +105,7 @@ const AllUsersPage = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/users/${users._id}`) 
+                axiosSecure.delete(`/users/${users._id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch()
@@ -77,7 +123,7 @@ const AllUsersPage = () => {
 
     return (
         <div className='p-4 bg-gray-900 rounded-lg '>
-            <div className='flex justify-between'>
+            <div className='flex justify-between  bg-slate-800 p-4 rounded-lg'>
                 <div>
                     <h1 className='text-stone-400 font-bold'>Dashboard</h1>
                     <p className='flex gap-2 font-semibold'>Home <FaAngleRight className='mt-1.5' /> Dashboard</p>
@@ -130,15 +176,19 @@ const AllUsersPage = () => {
                                         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-24">
                                             <li><a> {
                                                 item.role === 'admin' ? 'admin' :
-                                                    <button onClick={() => handleMakeAdmin(item)} className="">< GrUserAdmin className='text-red-600 text-xl'/></button>
+                                                    <button onClick={() => handleMakeAdmin(item)} className="">< GrUserAdmin className='text-red-600 text-xl' /></button>
                                             }</a></li>
                                             <li><a> {
                                                 item.role === 'volunteer' ? 'volunteer' :
-                                                    <button onClick={() => handleMakeVolunteer(item)} className="">< MdVolunteerActivism className='text-red-600 text-xl'/></button>
+                                                    <button onClick={() => handleMakeVolunteer(item)} className="">< MdVolunteerActivism className='text-red-600 text-xl' /></button>
                                             }</a></li>
-                                            <li><a> 
-                                                    <button onClick={() => handleDeleteUser(item)} className=""><MdAutoDelete className='text-red-600 text-xl'/></button>
-                                            </a></li> 
+                                            <li><a>
+                                                <button onClick={() => handleDeleteUser(item)} className=""><MdAutoDelete className='text-red-600 text-xl' /></button>
+                                            </a></li> <li><a>
+                                                <button onClick={() => handleBlockUser(item)} className="">Block</button>
+                                            </a></li> <li><a>
+                                                <button onClick={() => handleUnBlockUser(item)} className="">UnBlock</button>
+                                            </a></li>
                                         </ul>
                                     </div>
                                 </th>

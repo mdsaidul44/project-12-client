@@ -22,7 +22,8 @@ const EditRequest = () => {
               donationDate: data.donationDate,
               donationTime: data.donationTime,
               bloodGroup: data.bloodGroup,
-              requestMessage: data.requestMessage,  
+              requestMessage: data.requestMessage, 
+              status: 'pending' 
           }
         const res = await axiosPublic.patch(`/requests/${donorRequest._id}`,updateReq)
         // console.log(res.data)

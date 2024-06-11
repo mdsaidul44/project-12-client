@@ -3,8 +3,11 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { FaDeleteLeft } from 'react-icons/fa6';
 import Swal from 'sweetalert2';
 import useRequest from '../../Hooks/useRequest';
+import useAuth from '../../Hooks/useAuth';
+import { FaAngleRight } from 'react-icons/fa';
 
 const DonorHome = () => {
+    const {user} =useAuth()
     const [requests, , refetch] = useRequest()
     const axiosPublic = useAxiosPublic()
 
@@ -36,9 +39,15 @@ const DonorHome = () => {
     }
     return (
         <div>
-            <div className='text-3xl bg-slate-300 text-red-500 uppercase p-4 rounded-lg font-semibold'>
-                Welcome To The Donor Dashboard
-            </div>
+            <div className='lg:flex bg-slate-600 p-4 rounded-lg justify-between'>
+                <div>
+                    <h1 className='text-stone-800 font-bold mb-1'>Donor Dashboard</h1>
+                    <p className='flex gap-2 font-semibold'>Home <FaAngleRight className='mt-1.5' /> Dashboard</p>
+                </div>
+                <div>
+                    <h1 className='text-2xl font-bold text-stone-800 uppercase p-4 text-center'>Welcome {user?.displayName ? user?.displayName : 'Back'}</h1>
+                </div>
+            </div> 
             <div className='bg-gray-800 rounded-lg my-10'>
                 <div className='flex justify-between my-10 pt-4 px-8'>
                     <h1 className='text-2xl text-red-400 underline'>Your Total Request: {requests.slice(0, 3).length}</h1>

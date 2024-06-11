@@ -21,14 +21,14 @@ const AdminHome = () => {
             })
     }, [])
     return (
-        <div className='bg-slate-50 p-4 rounded-lg text-black'>
-            <div className='lg:flex justify-between'>
+        <div className='bg-slate-600 p-4 rounded-lg text-black'>
+            <div className='lg:flex justify-between bg-slate-800 rounded-lg p-4 mb-10'>
                 <div>
-                    <h1 className='text-stone-800 font-bold'>Dashboard</h1>
-                    <p className='flex gap-2 font-semibold'>Home <FaAngleRight className='mt-1.5' /> Dashboard</p>
+                    <h1 className='text-slate-100 font-bold'>Dashboard</h1>
+                    <p className='flex gap-2 font-semibold text-slate-400'>Home <FaAngleRight className='mt-1.5' /> Dashboard</p>
                 </div>
                 <div>
-                    <h1 className='text-2xl font-bold text-stone-800 uppercase p-4 text-center'>Welcome {user?.displayName ? user?.displayName : 'Back'}</h1>
+                    <h1 className='text-2xl font-bold text-stone-400 uppercase p-4 text-center'>Welcome {user?.displayName ? user?.displayName : 'Back'}</h1>
                 </div>
             </div>
             <div className='divider'></div>

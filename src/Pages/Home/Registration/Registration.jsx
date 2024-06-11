@@ -37,7 +37,8 @@ const Registration = () => {
                             upazila: data.upazila,
                             district: data.district,
                             group: data.group,
-                            image: res.data.data.display_url
+                            image: res.data.data.display_url,
+                            status: 'active'
                         }
 
                         axiosPublic.post('/users', userInfo)

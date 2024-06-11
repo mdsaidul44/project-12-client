@@ -24,6 +24,8 @@ import AdminRouter from "./AdminRouter";
 import VolunteerHome from "../Dashboard/Volunteer/VolunteerHome";
 import VolunteerRouter from './VolunteerRouter';
 import ContentManage from "../Dashboard/Admin/ContentManage";
+import UpdateBlog from "../Dashboard/Admin/UpdateBlog";
+import Contact from "../Dashboard/Admin/Contact";
  
 
   const router = createBrowserRouter([
@@ -90,6 +92,10 @@ import ContentManage from "../Dashboard/Admin/ContentManage";
           element: <DetailsRequest/>,
           loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
         }, 
+        {
+          path: 'contact',
+          element: <Contact/>
+        },
         // admin user
         {
           path: 'adminhome',
@@ -106,6 +112,11 @@ import ContentManage from "../Dashboard/Admin/ContentManage";
         {
           path: 'contentmanage',
           element:<AdminRouter><ContentManage/></AdminRouter>
+        },  
+        {
+          path: 'updateBlog/:id',
+          element: <AdminRouter><UpdateBlog/></AdminRouter>,
+          loader: ({params})=> fetch(`http://localhost:5000/blog/${params.id}`)
         }, 
         // volunteer user
         {

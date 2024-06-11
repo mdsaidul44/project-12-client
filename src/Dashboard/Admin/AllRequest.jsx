@@ -1,22 +1,126 @@
-import { useEffect, useState } from "react";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAllRequest from "../../Hooks/useAllRequest";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { FaAngleRight } from "react-icons/fa";
 
- 
+
 const AllRequest = () => {
-    const axiosPublic = useAxiosPublic()
-    const [requests, setRequests] = useState([])
+    const axiosSecure = useAxiosSecure() 
+    const [requests,,refetch] = useAllRequest()
 
-    useEffect(() => {
-        axiosPublic.get('/request')
+
+    // Request Pending Toggle
+    const handlePendingRequest =async(data) =>{
+        console.log('data paici', data)
+
+        const request = {
+            status: 'pending'
+        }
+        console.log(request)
+        await axiosSecure.patch(`/request/${data._id}`, request)
             .then(res => {
                 console.log(res.data)
-                setRequests(res.data)
+                if (res.data.modifiedCount > 0) {
+                    // show success popup 
+                    refetch()
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: 'Request Pending ',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
             })
-    }, [])
+    }
+
+    // Request Inprogress Toggle
+    const handleInprogressRequest =async(data) =>{
+        console.log('data paici', data)
+
+        const request = {
+            status: 'Inprogress'
+        }
+        console.log(request)
+        await axiosSecure.patch(`/request/${data._id}`, request)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    // show success popup 
+                    refetch()
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: 'Request Inprogress',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+    }
+
+    // Request Done Toggle
+    const handleDoneRequest =async(data) =>{
+        console.log('data paici', data)
+
+        const request = {
+            status: 'Done'
+        }
+        console.log(request)
+        await axiosSecure.patch(`/request/${data._id}`, request)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    // show success popup 
+                    refetch()
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: 'Request Done',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+    }
+
+    const handleCancelRequest = (data) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/requests/${data._id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            refetch()
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Request has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+            }
+        });
+
+    }
+     
     return (
         <div className="bg-gray-900 p-4 rounded-lg">
-            <div>
-                <h1 className='text-3xl text-center font-bold  pb-10 text-sky-200 underline'>All Request Page</h1>
+             <div className='flex justify-between mb-10 bg-slate-800 p-4 rounded-lg'>
+                <div>
+                    <h1 className='text-stone-400 font-bold'>Dashboard</h1>
+                    <p className='flex gap-2 font-semibold'>All Requests <FaAngleRight className='mt-1.5' /> Dashboard</p>
+                </div>
+                <div>
+                    <h1 className='text-2xl font-bold text-stone-400 uppercase p-4 text-center'> All Donor Requests</h1>
+                </div>
             </div>
             <div className="overflow-x-auto ">
                 <table className="table text-xl">
@@ -29,25 +133,26 @@ const AllRequest = () => {
                             <th>Recipient Location</th>
                             <th>Date</th>
                             <th>Status</th>
+                            <th>Manage</th>
                         </tr>
                     </thead>
                     <tbody className='text-slate-300'>
                         {/* row 1 */}
                         {
-                            requests.map(request => <tr>
+                            requests.map(request => <tr key={request._id}>
                                 <td className="font-semibold">
                                     <div className="flex items-center gap-3">
                                         <div>
-                                            <div className="font-semibold">{request.requesterName}</div>
+                                            <div className="font-semibold">{request?.requesterName}</div>
                                             <div className="text-sm  ">Hospital: {request.hospital} </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td className="text-sm underline">{request.requesterEmail}</td>
+                                <td className="text-sm underline">{request?.requesterEmail}</td>
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div>
-                                            <div className="font-semibold">{request.recipientName}</div>
+                                            <div className="font-semibold">{request?.recipientName}</div>
                                             <div className="text-sm  ">Blood Group: {request.bloodGroup} </div>
                                         </div>
                                     </div>
@@ -64,13 +169,30 @@ const AllRequest = () => {
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div>
-                                            <div className='font-semibold'>Date:{request.donationDate}</div>
-                                            <div className="text-sm ">Time:{request.donationTime}</div>
+                                            <div className='font-semibold'>Date:{request?.donationDate}</div>
+                                            <div className="text-sm ">Time:{request?.donationTime}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <th>
-                                    <button className="btn btn-ghost font-bold  ">{request.status}</button>
+                                    <button className="btn btn-ghost font-bold">{request.status}</button>
+                                </th>
+                                <th>
+                                    <div className="dropdown dropdown-bottom">
+                                        <div tabIndex={0} role="button" className="btn btn-sm btn-outline border-0 border-b-2 m-1">Manage</div>
+                                        <ul tabIndex={0} className="dropdown-content z-[1] menu  gap-2 shadow bg-base-100 rounded-box w-32">
+                                            {
+                                                request.status === 'pending' ? "" : <button onClick={()=>handlePendingRequest(request)} className="btn btn-sm btn-outline border-0 border-b-2"><li><a>Pending</a></li></button>
+                                            } 
+                                            {
+                                               request.status === 'Inprogress' ? "" :   <button onClick={()=>handleInprogressRequest(request)} className="btn btn-sm btn-outline border-0 border-b-2"><li><a>Inprogress</a></li></button>
+                                            } 
+                                            {
+                                              request.status === 'Done' ? "" :   <button onClick={()=>handleDoneRequest(request)} className="btn btn-sm btn-outline border-0 border-b-2"><li><a>Done</a></li></button> 
+                                                }
+                                            <button onClick={()=>handleCancelRequest(request)} className="btn btn-sm btn-outline border-0 border-b-2"><li><a>Cancel</a></li></button> 
+                                        </ul>
+                                    </div>
                                 </th>
                             </tr>)
                         }

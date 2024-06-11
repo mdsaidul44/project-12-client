@@ -62,8 +62,8 @@ const Dashboard = () => {
                     {/* shared nav link */}
                     <div className="divider"></div>
                     <li><NavLink to='/'><FaHome />HOME</NavLink></li>
-                    <li><NavLink to='/order/salad'><FaSearch />MENU</NavLink></li>
-                    <li><NavLink to='/order/contact'><FaEnvelope />CONTACT</NavLink></li>
+                    <li><NavLink to='/alldonation'><BsSendCheckFill />DONOR REQUEST</NavLink></li>
+                    <li><NavLink to='/dashboard/contact'><FaEnvelope />CONTACT</NavLink></li>
                 </ul>
             </div>
             <div className="flex-1 p-8">

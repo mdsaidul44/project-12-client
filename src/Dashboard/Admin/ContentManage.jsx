@@ -3,58 +3,14 @@ import { FaAngleRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import useBlog from '../../Hooks/useBlog';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import Swal from 'sweetalert2';
-import useAxiosPublic from '../../Hooks/useAxiosPublic';
-import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2'; 
 
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 const ContentManage = () => {
-    const { register, handleSubmit, reset } = useForm()
-    const [blogs, , refetch] = useBlog()
-    const axiosPublic = useAxiosPublic()
+    const [blogs, , refetch] = useBlog() 
     const axiosSecure = useAxiosSecure()
 
-    // Edit toggle
-    const onSubmit = async (data) => {
-        console.log("this is data field", data)
-
-        // const imageFile = { image: data.image[0] }
-        // const res = await axiosPublic.post(image_hosting_api, imageFile, {
-        //     headers: {
-        //         'content-type': 'multipart/form-data'
-        //     }
-        // });
-
-        // if (res.data.success) {
-        //     const blogUpdate = {
-        //         title: data.title,
-        //         img: res.data.data.display_url,
-        //         content: data.content,
-        //         publishDate: data.date,
-        //         status: "published"
-        //     }
-
-        //     const blogItem = await axiosSecure.patch(`/blogs/${data._id}`, blogUpdate)
-        //     console.log(blogItem.data)
-        //         .then(res => {
-        //             console.log(res.data)
-        //         })
-        //     if (blogItem.data.modifiedCount) {
-        //         refetch()
-        //         Swal.fire({
-        //             position: "top-end",
-        //             icon: "success",
-        //             title: "Updated successfully",
-        //             showConfirmButton: false,
-        //             timer: 1500
-        //         });
-        //     }
-        // }
-
-
-    }
+    
 
     // Publish toggle
     const handlePublish = async (data) => {
@@ -164,54 +120,9 @@ const ContentManage = () => {
                                             item?.status === 'published' ? <button className='btn  font-bold btn-sm btn-outline border-0 border-b-2'><li onClick={() => handleUnPublish(item)}><a>UnPublish</a></li></button> : <> <button className='btn  font-bold btn-sm btn-outline border-0 border-b-2'><li onClick={() => handlePublish(item)}><a>Published</a></li></button></>
                                         }
                                         {/* Open the modal using document.getElementById('ID').showModal() method */}
-                                        <button className="btn  font-bold btn-sm btn-outline border-0 border-b-2" onClick={() => document.getElementById('my_modal_5').showModal(item._id)}>Edit</button>
-                                        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                                            <div className="modal-box bg-gray-200">
-                                                <h1 className='text-xl font-bold text-black'>Update Now</h1>
-                                                <form onSubmit={() => handleSubmit(onSubmit)(item._id)}>
-                                                    <div >
-                                                        <label className="form-control   mt-6">
-                                                            <div className="label">
-                                                                <span className="label-text  text-black">Title</span>
-                                                            </div>
-                                                            <input {...register("title", { required: true })} type="text" placeholder="Title" className="input input-bordered w-full text-black placeholder:text-black bg-gray-400" required />
-                                                        </label>
-                                                    </div>
-                                                    <div >
-                                                        <label className="form-control   mt-6">
-                                                            <div className="label">
-                                                                <span className="label-text  text-black">Date</span>
-                                                            </div>
-                                                            <input {...register("date", { required: true })} type="date" className="input input-bordered w-full text-black placeholder:text-black bg-gray-400" required />
-                                                        </label>
-                                                    </div>
-                                                    <div >
-                                                        {/* Recipient name field */}
-                                                        <label className="form-control ">
-                                                            <div className="label">
-                                                                <span className="label-text text-black">Image File</span>
-                                                            </div>
-                                                            <input type="file" {...register("image", { required: true })} className="file-input w-full   bg-gray-400" />
-                                                        </label>
-                                                    </div>
-                                                    {/* description box */}
-                                                    <label className="form-control">
-                                                        <div className="label">
-                                                            <span className="label-text text-black">Content Text</span>
-                                                        </div>
-                                                        <textarea  {...register('content')} className="textarea textarea-bordered h-24  text-black placeholder:text-black bg-gray-400" placeholder="Writing Of Text Field"></textarea>
-                                                    </label>
-                                                    <input type="submit" className="w-full border-0 text-black hover:btn-primary btn-outline border-b-4 btn mt-4 font-bold uppercase " value="Update" />
-                                                </form>
-                                                <div className="modal-action">
-                                                    <form method="dialog">
-                                                        {/* if there is a button in form, it will close the modal */}
-                                                        <button className="btn btn-outline text-black">Close</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </dialog>
-                                        <button className='btn  font-bold btn-sm btn-outline border-0 border-b-2'><li onClick={() => handleDelete(item)}><a>Delete</a></li></button>
+                                        <Link to={`/dashboard/updateBlog/${item._id}`}><button className="btn font-bold btn-sm btn-outline border-0 border-b-2"><li><a>Edit</a></li></button>
+                                        </Link>
+                                        <button className='btn font-bold btn-sm btn-outline border-0 border-b-2'><li onClick={() => handleDelete(item)}><a>Delete</a></li></button>
                                     </ul>
 
                                 </div>
