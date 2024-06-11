@@ -7,6 +7,7 @@ import useUser from "../Hooks/useUser";
 import useAdmin from "../Hooks/useAdmin";
 import { MdOutlineManageSearch } from "react-icons/md";  
 import useVolunteer from "../Hooks/useVolunteer"; 
+import { BiSolidContact } from "react-icons/bi";
 
 
 
@@ -22,15 +23,15 @@ const Dashboard = () => {
 
     return (
         <div className="lg:flex">
-            <div className="lg:w-64 min-h-screen bg-gray-300">
+            <div className="lg:w-64 min-h-screen bg-gray-400">
                 <ul className="menu text-black">
                     <div className="avatar ">
                         <div className="w-24 rounded-full ring mx-auto my-4 ring-primary ring-offset-base-100 ring-offset-2">
                             <img src={user?.photoURL || 'https://i.ibb.co/DppxTgs/52d5d97dd7dd3125df4d7b45d55f2ce3.jpg'} />
                         </div>
                     </div>
-                    <div className="text-center font-bold mb-4">
-                        <span>Welcome </span>
+                    <div className="text-center shadow-lg p-4 rounded-lg shadow-gray-700 font-bold mb-4">
+                        <span className="text-xl">Welcome </span>
                         {
                             item?.name ? user?.displayName : 'Back'
                         }
@@ -47,23 +48,23 @@ const Dashboard = () => {
                         </>
                         : isVolunteer  ?
                             <>
-                                <li><NavLink to='/dashboard/volunteerhome'><FaHome />VOLUNTEER HOME </NavLink></li>
-                                <li><NavLink to='/dashboard/sentrequest'><BsFillRocketTakeoffFill />Sent Request</NavLink></li>
-                                <li><NavLink to='/dashboard/myrequest'><BsSendCheckFill />My Request</NavLink></li>
+                                <li className="font-bold shadow-lg hover:shadow-black mt-4 mb-2 rounded-lg"><NavLink to='/dashboard/volunteerhome'><FaHome />VOLUNTEER HOME </NavLink></li>
+                                <li className="font-bold shadow-lg mb-2 hover:shadow-black rounded-lg"><NavLink to='/dashboard/alldonor'><BsFillRocketTakeoffFill />ALL DONOR REQUEST</NavLink></li>
+                                <li className="font-bold mb-2 rounded-lg shadow-lg hover:shadow-black"><NavLink to='/dashboard/myrequest'><BsSendCheckFill />My Request</NavLink></li>
                             </>
                             : user &&
                             <>
-                                <li><NavLink to='/dashboard/homepage'><FaHome />HOME PAGE</NavLink></li>
-                                <li><NavLink to='/dashboard/sentrequest'><BsFillRocketTakeoffFill />Sent Request</NavLink></li>
-                                <li><NavLink to='/dashboard/myrequest'><BsSendCheckFill />My Request</NavLink></li>
+                                <li className="shadow-lg hover:shadow-black font-bold rounded-lg"><NavLink to='/dashboard/homepage mb-2'><FaHome />HOME PAGE</NavLink></li>
+                                <li className="shadow-lg hover:shadow-black mb-2 font-bold rounded-lg"><NavLink to='/dashboard/sentrequest'><BsFillRocketTakeoffFill />Sent Request</NavLink></li>
+                                <li className="shadow-lg hover:shadow-black font-bold rounded-lg"><NavLink to='/dashboard/myrequest'><BsSendCheckFill />My Request</NavLink></li>
                             </>
                     }
 
                     {/* shared nav link */}
                     <div className="divider"></div>
-                    <li><NavLink to='/'><FaHome />HOME</NavLink></li>
-                    <li><NavLink to='/alldonation'><BsSendCheckFill />DONOR REQUEST</NavLink></li>
-                    <li><NavLink to='/dashboard/contact'><FaEnvelope />CONTACT</NavLink></li>
+                    <li className="shadow-lg hover:shadow-black mb-2 font-bold rounded-lg"><NavLink to='/'><FaHome />HOME</NavLink></li>
+                    <li className="shadow-lg hover:shadow-black font-bold mb-2 rounded-lg"><NavLink to='/alldonation'><BsSendCheckFill />DONOR REQUEST</NavLink></li>
+                    <li className="shadow-lg hover:shadow-black font-bold rounded-lg"><NavLink to='/dashboard/contact'><BiSolidContact />CONTACT</NavLink></li>
                 </ul>
             </div>
             <div className="flex-1 p-8">

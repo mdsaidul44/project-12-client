@@ -1,28 +1,33 @@
-
+import React, { useEffect, useState } from 'react';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { FaAngleRight } from 'react-icons/fa';
-import useRequest from '../../Hooks/useRequest';
 import { Link } from 'react-router-dom';
 
-const MyRequest = () => {
-    const [requests] = useRequest()
-    // console.log(requests)
-    return (
-        <div>
+const AllDonorReq = () => {
+    const axiosPublic = useAxiosPublic()
+    const [requests, setRequests] = useState([])
 
+    useEffect(() => {
+        axiosPublic.get('/request')
+            .then(res => {
+                // console.log(res.data)
+                setRequests(res.data)
+            })
+    }, [])
+
+    return (
+        <div className="bg-slate-800 p-4 rounded-lg">
             <div className='lg:flex bg-slate-600 p-4 mb-10 rounded-lg justify-between'>
-                <div>
-                    <h1 className='text-stone-800 font-bold'>Donor Dashboard</h1>
+                <div className='shadow-white shadow-lg p-4'>
+                    <h1 className='text-stone-900 font-bold'>Volunteer / Dashboard</h1>
                     <p className='flex gap-2 font-semibold'>My Request <FaAngleRight className='mt-1.5' /> Dashboard</p>
                 </div>
                 <div>
-                    <h1 className='text-2xl font-bold text-stone-800 uppercase p-4 text-center'>My Request</h1>
-                </div>
-                <div>
-                    <Link to='/Alldonation'> <button className='btn-sm btn btn-outline border-0 border-b-4 text-black mt-4 bg-slate-200'>All donation Requests</button></Link>
-                </div>
+                    <h1 className='text-2xl shadow-white shadow-lg font-bold text-stone-800 uppercase p-4 text-center'>All Donor Request</h1>
+                </div> 
             </div>
-            <div className="overflow-x-auto bg-gray-800 ">
-                <table className="table text-xl">
+            <div className="overflow-x-auto bg-gray-900 p-2">
+                <table className=" table text-xl">
                     {/* head */}
                     <thead>
                         <tr className='text-white'>
@@ -56,7 +61,7 @@ const MyRequest = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    <div className="flex items-center gap-3">
+                                    <div className="lg:flex items-center gap-3">
                                         <div>
                                             <div className="font-semibold">{request.recipientAddress}</div>
                                             <div className="text-sm my-1">District: {request.district} </div>
@@ -84,4 +89,4 @@ const MyRequest = () => {
     );
 };
 
-export default MyRequest;
+export default AllDonorReq;

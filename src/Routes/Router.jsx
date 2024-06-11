@@ -26,6 +26,7 @@ import VolunteerRouter from './VolunteerRouter';
 import ContentManage from "../Dashboard/Admin/ContentManage";
 import UpdateBlog from "../Dashboard/Admin/UpdateBlog";
 import Contact from "../Dashboard/Admin/Contact";
+import AllDonorReq from "../Dashboard/Volunteer/AllDonorReq";
  
 
   const router = createBrowserRouter([
@@ -121,9 +122,12 @@ import Contact from "../Dashboard/Admin/Contact";
         // volunteer user
         {
           path:'volunteerhome',
-          element: <VolunteerRouter><VolunteerHome/></VolunteerRouter>
+          element: <VolunteerRouter><VolunteerHome/></VolunteerRouter> 
+        },
+        {
+          path: 'alldonor',
+          element: <VolunteerRouter><AllDonorReq/></VolunteerRouter>
         }
-
       ] 
     }
 
