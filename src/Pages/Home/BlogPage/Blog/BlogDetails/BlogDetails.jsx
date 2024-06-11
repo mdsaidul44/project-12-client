@@ -4,7 +4,7 @@ import { FcReading } from "react-icons/fc";
 
 const BlogDetails = () => {
     const blogDetails = useLoaderData()
-    console.log(blogDetails)
+    // console.log(blogDetails)
     const { img, title, description } = blogDetails
     return (
         <div>

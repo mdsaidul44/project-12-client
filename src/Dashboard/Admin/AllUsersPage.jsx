@@ -10,13 +10,13 @@ import Swal from 'sweetalert2';
 const AllUsersPage = () => { 
     const axiosSecure = useAxiosSecure()
     const [users, loading, refetch] = useUser()
-    console.log(users)
+    // console.log(users)
 
 
     const handleMakeAdmin = (users) => {
         axiosSecure.patch(`/users/admin/${users._id}`)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 if (res.data.modifiedCount > 0) {
                     refetch()
                     Swal.fire({

@@ -10,7 +10,7 @@ const AllDonationRequest = () => {
     useEffect(() => {
         axiosPublic.get('/request')
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 setRequests(res.data)
             })
     }, [])

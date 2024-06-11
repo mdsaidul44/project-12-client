@@ -106,12 +106,13 @@ import ContentManage from "../Dashboard/Admin/ContentManage";
         {
           path: 'contentmanage',
           element:<AdminRouter><ContentManage/></AdminRouter>
-        },
+        }, 
         // volunteer user
         {
           path:'volunteerhome',
           element: <VolunteerRouter><VolunteerHome/></VolunteerRouter>
         }
+
       ] 
     }
 

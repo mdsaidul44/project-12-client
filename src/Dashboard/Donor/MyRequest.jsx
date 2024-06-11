@@ -3,7 +3,7 @@ import useRequest from '../../Hooks/useRequest';
 
 const MyRequest = () => {
     const [requests] = useRequest()
-    console.log(requests)
+    // console.log(requests)
     return (
         <div> 
             <div>

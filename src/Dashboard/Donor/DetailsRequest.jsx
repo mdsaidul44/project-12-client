@@ -4,7 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const DetailsRequest = () => {
     const request = useLoaderData()
-    console.log(request)
+    // console.log(request)
     return (
         <div>
             <div>

@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+
 const AddBlog = () => {
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
@@ -19,9 +20,8 @@ const AddBlog = () => {
         if (res.data.success) {
             const blogInfo = {
                 title: data.title,
-                img: res.data.data.display_url,
-                description: data.content,
-                publishDate: data.date,
+                image: res.data.data.display_url,
+                content: data.content,
                 status: "Dreft"
             }
 
@@ -56,22 +56,13 @@ const AddBlog = () => {
                                 <input {...register("title", { required: true })} type="text" placeholder="Title" className="input input-bordered w-full text-black placeholder:text-black bg-gray-400" required />
                             </label>
                         </div>
-                            {/* Recipient name field */}
                         <div >
+                            {/* Recipient name field */}
                             <label className="form-control ">
                                 <div className="label">
                                     <span className="label-text text-black">Image File</span>
                                 </div>
                                 <input type="file" {...register("image", { required: true })} className="file-input w-full   bg-gray-400" />
-                            </label>
-                        </div>
-                            {/* Publish date */}
-                        <div >
-                            <label className="form-control ">
-                                <div className="label">
-                                    <span className="label-text text-black">Date</span>
-                                </div>
-                                <input type="date" {...register("date", { required: true })} className="input input-bordered w-full text-black placeholder:text-black bg-gray-400" />
                             </label>
                         </div>
                         {/* description box */}

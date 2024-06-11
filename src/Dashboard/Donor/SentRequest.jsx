@@ -11,7 +11,7 @@ const SentRequest = () => {
     
 
     const onSubmit = async (data) => {
-        console.log(data)
+        // console.log(data)
         const requestInfo = {
             requesterName: data.RequesterName,
             requesterEmail: data.RequesterEmail,

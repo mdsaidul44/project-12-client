@@ -14,8 +14,7 @@ const Registration = () => {
     const { register, handleSubmit, reset, formState: { errors }, } = useForm()
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
-    const onSubmit = async (data) => {
-        console.log(data)
+    const onSubmit = async (data) => { 
 
         const imageFile = { image: data.file[0] }
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -29,10 +28,7 @@ const Registration = () => {
             return false;
         }
         createUser(data.email, data.password)
-            .then(result => {
-                // setTimeout(() => {
-                //     window.location.reload();
-                // }, 1000)
+            .then(result => { 
                 console.log(result.user)  
 
                         const userInfo = {

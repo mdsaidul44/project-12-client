@@ -6,8 +6,7 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { useEffect } from 'react';
 
 const Navbar = () => {
-    const { user, logOut } = useAuth() 
-    const axiosPublic = useAxiosPublic()
+    const { user, logOut } = useAuth()  
       
 
     const handleLogout = () => {
@@ -62,7 +61,7 @@ const Navbar = () => {
                                 }
                             </div>
                             <Link to='/'><li><a>Home</a></li></Link>
-                            <Link to='/dashboard/homepage'><li><a>Dashboard</a></li></Link>
+                            <Link to='/dashboard'><li><a>Dashboard</a></li></Link>
                             <Link><li onClick={handleLogout}><a className='text-red-500'>Logout<LuLogOut className='mt-1'/></a></li></Link>
                         </ul>
                     </div></> : 

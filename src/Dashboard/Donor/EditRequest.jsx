@@ -7,13 +7,13 @@ import Swal from "sweetalert2";
 
 const EditRequest = () => {
     const donorRequest = useLoaderData()
-    console.log(donorRequest) 
+    // console.log(donorRequest) 
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
 
 
     const onSubmit = async (data) => {
-        console.log(data)
+        // console.log(data)
         const updateReq = { 
               requesterName: data.requesterName,
               requesterEmail: data.requesterEmail,
@@ -25,7 +25,7 @@ const EditRequest = () => {
               requestMessage: data.requestMessage,  
           }
         const res = await axiosPublic.patch(`/requests/${donorRequest._id}`,updateReq)
-        console.log(res.data)
+        // console.log(res.data)
         if(res.data.modifiedCount > 0){
             // show success popup
             reset()

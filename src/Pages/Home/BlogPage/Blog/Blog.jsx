@@ -2,19 +2,13 @@ import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import BlogCard from "./BlogCard";
 import { Link } from "react-router-dom";
+import useBlog from "../../../../Hooks/useBlog";
 
 
-const Blog = () => {
-    const axiosPublic = useAxiosPublic()
-    const [blogs, setBlogs] = useState([])
-
-    useEffect(() => {
-        axiosPublic.get('/blog')
-            .then(res => {
-                console.log(res.data)
-                setBlogs(res.data)
-            })
-    }, [])
+const Blog = () => { 
+    const [blogs] = useBlog() 
+    // console.log(blogs)
+    const published = blogs.filter(item=> item.status === 'published')
 
     return (
         <div className="">
@@ -38,7 +32,7 @@ const Blog = () => {
             </div>
             <div className="lg:flex justify-evenly bg-slate-300 text-black gap-60 rounded-lg mt-20 p-4 ">
                 <h1 className="text-3xl lg:-ml-28 font-semibold">Category:</h1>
-                <h1 className="text-3xl font-semibold">Total Blog : {blogs.length}</h1>  
+                <h1 className="text-3xl font-semibold">Total Blog : {published.length}</h1>  
                    <Link to='/addblog'><button className="btn-outline p-2  lg:-mr-20 btn-primary rounded-lg font-bold  border-b-2">Add New Blog</button> </Link>  
             </div>
             <div className="lg:flex">
@@ -71,7 +65,7 @@ const Blog = () => {
                 </div>
                 <div className="lg:w-3/4 space-y-8 rounded-lg p-8">
                     {
-                        blogs.map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
+                        published.map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
                     }
                 </div>
             </div>
