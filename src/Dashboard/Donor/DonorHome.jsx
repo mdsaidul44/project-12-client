@@ -5,12 +5,16 @@ import Swal from 'sweetalert2';
 import useRequest from '../../Hooks/useRequest';
 import useAuth from '../../Hooks/useAuth';
 import { FaAngleRight } from 'react-icons/fa';
+import { useEffect } from 'react';
 
 const DonorHome = () => {
     const {user} =useAuth()
     const [requests, , refetch] = useRequest()
     const axiosPublic = useAxiosPublic()
+    useEffect(()=>{
+        document.title  = "Dashboard | Home"
 
+    })
 
     const handleDeleteRequest = (id) => {
         Swal.fire({

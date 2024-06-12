@@ -1,28 +1,33 @@
+import Aos from "aos";
+import { useEffect } from "react";
 
 
 const Footer = () => {
+    useEffect(()=>{
+        Aos.init()
+    })
     return (
         <div>
             <footer className="footer p-10 bg-base-200 text-base-content">
                 <nav>
-                    <h6 className="footer-title">Services</h6>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Hosting</a>
-                    <a className="link link-hover">Advertisement</a>
+                    <h6 data-aos="fade-right"  data-aos-duration="1500"  className="footer-title">Services</h6>
+                    <a  data-aos="fade-left"  data-aos-duration="1500" className="link link-hover">Branding</a>
+                    <a  data-aos="fade-right"  data-aos-duration="1500"  className="link link-hover">Design</a>
+                    <a  data-aos="fade-left"  data-aos-duration="1500"  className="link link-hover">Hosting</a>
+                    <a  data-aos="fade-right"  data-aos-duration="1500"  className="link link-hover">Advertisement</a>
                 </nav>
                 <nav>
-                    <h6 className="footer-title">Company</h6>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
+                    <h6 data-aos="fade-right"  data-aos-duration="1500" className="footer-title">Company</h6>
+                    <a  data-aos="fade-left"  data-aos-duration="1500" className="link link-hover">About us</a>
+                    <a  data-aos="fade-right"  data-aos-duration="1500" className="link link-hover">Contact</a>
+                    <a  data-aos="fade-left"  data-aos-duration="1500" className="link link-hover">Jobs</a>
+                    <a  data-aos="fade-right"  data-aos-duration="1500" className="link link-hover">Press kit</a>
                 </nav>
                 <nav>
-                    <h6 className="footer-title">Legal</h6>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
+                    <h6 data-aos="fade-left"  data-aos-duration="1500" className="footer-title">Legal</h6>
+                    <a data-aos="fade-right"  data-aos-duration="1500"  className="link link-hover">Terms of use</a>
+                    <a  data-aos="fade-left"  data-aos-duration="1500" className="link link-hover">Privacy policy</a>
+                    <a data-aos="fade-right"  data-aos-duration="1500"  className="link link-hover">Cookie policy</a>
                 </nav>
             </footer>
             <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">

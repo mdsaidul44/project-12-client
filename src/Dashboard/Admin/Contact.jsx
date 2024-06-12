@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaAngleRight, FaPhoenixFramework } from 'react-icons/fa';
 import { IoCall } from 'react-icons/io5';
 
 const Contact = () => {
+    useEffect(()=>{
+        document.title  = "Dashboard | Contact"
+
+    })
     return (
         <div>
             <div className='flex justify-between bg-slate-800 p-4 mb-4 rounded-lg'>

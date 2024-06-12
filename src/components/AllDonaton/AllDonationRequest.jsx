@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Aos from "aos";
 
 
 
@@ -13,8 +14,11 @@ const AllDonationRequest = () => {
                 // console.log(res.data)
                 setRequests(res.data)
             })
-    }, [])
-
+     document.title  = "Home | All Request"
+    }, []) 
+    useEffect(()=>{
+        Aos.init()
+    })
     return (
         <div className=""> 
             <div className='lg:flex rounded-lg lg:h-96 mb-10 bg-slate-600'>
@@ -23,8 +27,8 @@ const AllDonationRequest = () => {
                         <img className='rounded-full shadow-lg shadow-black w-40' src="https://i.ibb.co/72r555M/39.jpg" alt="" />
                     </div>
                     <div  className='mt-8 '>
-                        <h1 className='text-2xl font-bold text-teal-500 mb-2 shadow-md shadow-teal-400'>All Blood Request</h1>
-                        <h1 className='text-blue-300 underline'>A blood donation occurs when a person voluntarily has blood drawn and used for transfusions and/or made into</h1> 
+                        <h1  data-aos="fade-left"  data-aos-duration="1500"  className='text-2xl font-bold text-teal-500 mb-2 shadow-md shadow-teal-400'>All Blood Request</h1>
+                        <h1  data-aos="fade-right"  data-aos-duration="1500"  className='text-blue-300 underline'>A blood donation occurs when a person voluntarily has blood drawn and used for transfusions and/or made into</h1> 
                     </div>
                 </div>
                 <div className='lg:w-1/2 '>
@@ -32,25 +36,25 @@ const AllDonationRequest = () => {
                 </div>
             </div> 
             <div>
-            <h1 className='text-2xl font-bold text-center  text-teal-500 mb-8 shadow-md shadow-teal-400'>All Donation Request</h1>
+            <h1  data-aos="fade-up"  data-aos-duration="1500"  className='text-2xl font-bold text-center  text-teal-500 mb-8 shadow-md shadow-teal-400'>All Donation Request</h1>
             </div>
             <div className="overflow-x-auto bg-gray-900 p-4 rounded-lg">
                 <table className=" table text-xl">
                     {/* head */}
                     <thead>
                         <tr className='text-white'>
-                            <th>Requester Name</th>
-                            <th>Requester Email</th>
-                            <th>Recipient Name</th>
-                            <th>Recipient Location</th>
-                            <th>Date</th>
-                            <th>Status</th>
+                            <th  data-aos="fade-down"  data-aos-duration="1500" >Requester Name</th>
+                            <th data-aos="fade-down"  data-aos-duration="1500" >Requester Email</th>
+                            <th data-aos="fade-down"  data-aos-duration="1500" >Recipient Name</th>
+                            <th data-aos="fade-down"  data-aos-duration="1500" >Recipient Location</th>
+                            <th data-aos="fade-down"  data-aos-duration="1500" >Date</th>
+                            <th data-aos="fade-down"  data-aos-duration="1500" >Status</th>
                         </tr>
                     </thead>
                     <tbody className='text-slate-300'>
                         {/* row 1 */}
                         {
-                            requests.map(request => <tr>
+                            requests.map(request => <tr key={request._id} data-aos="fade-left"  data-aos-duration="1000" >
                                 <td className="font-semibold">
                                     <div className="flex items-center gap-3">
                                         <div>

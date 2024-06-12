@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import useBlog from '../../Hooks/useBlog';
@@ -10,7 +10,9 @@ const ContentManage = () => {
     const [blogs, , refetch] = useBlog() 
     const axiosSecure = useAxiosSecure()
 
-    
+    useEffect(()=>{
+        document.title  = "Dashboard | Manage"
+    })
 
     // Publish toggle
     const handlePublish = async (data) => {

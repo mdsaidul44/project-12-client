@@ -1,24 +1,18 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
 const ErrorElement = () => {
+    useEffect(()=>{
+        document.title  = "Error | ErrorPage"
+
+    })
     return (
-        <div> 
-            <div>
-                <div className="min-h-full  bg-base-100 shadow-xl">
-                    <figure><img src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">New album is released!</h2>
-                        <p>Click the button to listen on Spotiwhy app.</p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary"><Link to='/'><button className="btn"> back to home</button></Link></button>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                
-                </div>
+        <div className="text-center lg:mt-24  "> 
+            <div className="lg:ml-[400px] mb-4">  
+                <img className="lg:w-[600px] rounded-lg" src="https://i.ibb.co/vPqdc8r/10173948-8632.jpg" alt="" />
             </div>
+            <Link><button className="btn btn-outline border-0 border-b-4 shadow-lg shadow-black uppercase">Go Back</button></Link>
         </div>
     );
 };

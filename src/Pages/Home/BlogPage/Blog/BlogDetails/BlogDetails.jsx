@@ -1,11 +1,15 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { FcReading } from "react-icons/fc";
+import { useEffect } from "react";
+import Aos from "aos";
 
 
 const BlogDetails = () => {
-    const blogDetails = useLoaderData()
-    // console.log(blogDetails)
+    const blogDetails = useLoaderData() 
     const { img, title, description } = blogDetails
+    useEffect(()=>{
+        Aos.init()
+    })
     return (
         <div>
             <div className="hero h-[450px]" style={{ backgroundImage: 'url(https://i.ibb.co/DzXSF13/28463049-xco2-8jtl-220606.jpg)' }}>

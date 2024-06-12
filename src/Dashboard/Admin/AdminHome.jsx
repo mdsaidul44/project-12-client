@@ -19,6 +19,8 @@ const AdminHome = () => {
                 // console.log(res.data)
                 setRequests(res.data)
             })
+            document.title  = "Admin | Home"
+
     }, [])
     return (
         <div className='bg-slate-600 p-4 rounded-lg text-black'>

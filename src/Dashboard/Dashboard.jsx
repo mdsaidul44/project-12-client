@@ -9,6 +9,7 @@ import { MdOutlineManageSearch } from "react-icons/md";
 import useVolunteer from "../Hooks/useVolunteer"; 
 import { BiSolidContact } from "react-icons/bi";
 import { SiAwssecretsmanager } from "react-icons/si";
+import { useEffect } from "react";
 
 
 
@@ -19,7 +20,10 @@ const Dashboard = () => {
     const [isAdmin] = useAdmin()  
     const [isVolunteer]= useVolunteer() 
 
+    useEffect(()=>{
+        document.title  = "Dashboard "
 
+    })
      
 
     return (

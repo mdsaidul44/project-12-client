@@ -18,6 +18,7 @@ const VolunteerHome = () => {
                 // console.log(res.data)
                 setRequests(res.data)
             })
+            document.title  = "Volunteer | Home"
     }, [])
     return (
         <div>

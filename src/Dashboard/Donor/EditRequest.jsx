@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
 
 
 
@@ -10,7 +11,10 @@ const EditRequest = () => {
     // console.log(donorRequest) 
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
+    useEffect(()=>{
+        document.title  = "Dashboard | Edit"
 
+    })
 
     const onSubmit = async (data) => {
         // console.log(data)

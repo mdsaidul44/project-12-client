@@ -2,12 +2,17 @@ import useAllRequest from "../../Hooks/useAllRequest";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { FaAngleRight } from "react-icons/fa";
+import { useEffect } from "react";
+import Aos from "aos";
 
 
 const AllRequest = () => {
     const axiosSecure = useAxiosSecure() 
     const [requests,,refetch] = useAllRequest()
+    useEffect(()=>{
+        document.title  = "Dashboard | All request"
 
+    })
 
     // Request Pending Toggle
     const handlePendingRequest =async(data) =>{
@@ -110,6 +115,10 @@ const AllRequest = () => {
         });
 
     }
+
+    useEffect(()=>{
+        Aos.init()
+    })
      
     return (
         <div className="bg-gray-900 p-4 rounded-lg">

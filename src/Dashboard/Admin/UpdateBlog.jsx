@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import { useForm } from 'react-hook-form'; 
 import Swal from 'sweetalert2';
 import { useLoaderData } from 'react-router-dom';
 import { FaAngleRight } from 'react-icons/fa';
@@ -11,9 +10,12 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 const UpdateBlog = () => {
     const blogs = useLoaderData()
     console.log(blogs)
-    const { register, handleSubmit, reset } = useForm()
-    const axiosSecure = useAxiosSecure() 
+    const { register, handleSubmit, reset } = useForm() 
     const axiosPublic = useAxiosPublic()
+    useEffect(()=>{
+        document.title  = "Dashboard | Update"
+
+    })
     // Edit toggle
     const onSubmit = async (data) => {
         console.log("this is data field", data)

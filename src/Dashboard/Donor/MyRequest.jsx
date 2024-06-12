@@ -2,10 +2,14 @@
 import { FaAngleRight } from 'react-icons/fa';
 import useRequest from '../../Hooks/useRequest';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const MyRequest = () => {
     const [requests] = useRequest()
     // console.log(requests)
+    useEffect(()=>{
+        document.title  = "Dashboard | All Request"
+    })
     return (
         <div>
 

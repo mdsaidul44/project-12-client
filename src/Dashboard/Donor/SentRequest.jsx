@@ -3,13 +3,17 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { FaAngleRight } from "react-icons/fa";
+import { useEffect } from "react";
 
 
 const SentRequest = () => {
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
     const { user } = useAuth()
+    useEffect(()=>{
+        document.title  = "Home | SentRequest"
 
+    })
 
     const onSubmit = async (data) => {
         // console.log(data)

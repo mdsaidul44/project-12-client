@@ -1,16 +1,16 @@
 import { FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import useBlog from "../../Hooks/useBlog";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import Swal from "sweetalert2";
+import useBlog from "../../Hooks/useBlog"; 
+import { useEffect } from "react";
 
 
 
 const VolunteerContentManag = () => {
-    const [blogs, , refetch] = useBlog() 
-    const axiosSecure = useAxiosSecure()
+    const [blogs, , refetch] = useBlog()  
 
-    
+    useEffect(()=>{
+        document.title  = "Dashboard | Management"
+    })
   
  
     return (

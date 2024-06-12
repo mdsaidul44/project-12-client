@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
-import { FaAngleRight } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaAngleRight } from 'react-icons/fa'; 
 
 const AllDonorReq = () => {
     const axiosPublic = useAxiosPublic()
@@ -13,6 +12,7 @@ const AllDonorReq = () => {
                 // console.log(res.data)
                 setRequests(res.data)
             })
+            document.title  = "Dashboard | All Donor Request"
     }, [])
 
     return (

@@ -5,12 +5,17 @@ import { MdVolunteerActivism } from "react-icons/md";
 import { MdAutoDelete } from "react-icons/md";
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { useEffect } from 'react';
 
 
 const AllUsersPage = () => {
     const axiosSecure = useAxiosSecure()
     const [users, loading, refetch] = useUser()
-    console.log(users)
+    // console.log(users)
+    useEffect(()=>{
+        document.title  = "Dashboard | AllUsers"
+
+    })
 
     // user status block 
     const handleBlockUser = async (data) => {

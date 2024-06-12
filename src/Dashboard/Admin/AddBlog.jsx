@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -8,6 +9,10 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const AddBlog = () => {
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
+    useEffect(()=>{
+        document.title  = "Home | AddBlog"
+
+    })
     const onSubmit = async (data) => {
         // console.log('this is data', data)
         const imageFile = { image: data.image[0] }

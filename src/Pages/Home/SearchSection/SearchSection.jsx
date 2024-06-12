@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import useRequest from "../../../Hooks/useRequest";
 import { useEffect, useState } from "react";
+import Aos from "aos";
 
 
 const SearchSection = () => {
@@ -9,15 +10,21 @@ const SearchSection = () => {
     const [requests] =useRequest()
     const [reRequest,setReRequest] = useState()
     // console.log(reRequest)
+
+    useEffect(()=>{
+        Aos.init()
+    })
     
     const onSubmit = (data) => {
-        setReRequest(requests.filter(data => data.district.toLowerCase().includes(data)))
+        console.log(data)
+    //    const res = requests.filter(data=> data.bloodGroup === 'A+')
+        
     }
     return (
         <div className="my-20 ">
             <div className="text-teal-200 text-3xl font-bold text-center w-60 mx-auto rounded-lg p-2 shadow-lg shadow-teal-600">Find Blood</div>
             <div className="lg:flex justify-around bg-teal-600 mt-10 p-6 rounded-lg text-black font-semibold">
-                <h1 className="text-2xl lg:-ml-20 font-bold ">Search Hare</h1>
+                <h1  data-aos="fade-down"  data-aos-duration="2000"  className="text-2xl lg:-ml-20 font-bold ">Search Hare</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
                 <select {...register("district", { required: true })} className="select  bg-teal-300 btn-sm select-bordered ">
                                     <option disabled selected>Select District</option>
@@ -100,7 +107,7 @@ const SearchSection = () => {
                     <input type="submit" className="btn ml-4 btn-sm" value="Search" />
                 </form>
                 <div>
-                <Link to='/Alldonation'> <button className='btn-sm btn btn-outline border-0 border-b-4 text-black lg:-mr-32 bg-slate-200'>All donation Requests</button></Link>
+                <Link to='/Alldonation'> <button  data-aos="fade-up"  data-aos-duration="2000"  className='btn-sm btn btn-outline border-0 border-b-4 text-black lg:-mr-32 bg-slate-200'>All donation Requests</button></Link>
                 </div>
             </div>
 

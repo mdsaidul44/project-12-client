@@ -1,10 +1,14 @@
+import { useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 
 
 const DetailsRequest = () => {
     const request = useLoaderData()
-    // console.log(request)
+    useEffect(()=>{
+        document.title  = "Home | BlogDetails"
+
+    })
     return (
         <div>
             <div>
