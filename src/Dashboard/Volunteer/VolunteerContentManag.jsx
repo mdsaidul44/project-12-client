@@ -1,18 +1,18 @@
 import { FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import useBlog from "../../Hooks/useBlog"; 
+import useBlog from "../../Hooks/useBlog";
 import { useEffect } from "react";
 
 
 
 const VolunteerContentManag = () => {
-    const [blogs, , refetch] = useBlog()  
+    const [blogs, , refetch] = useBlog()
 
-    useEffect(()=>{
-        document.title  = "Dashboard | Management"
+    useEffect(() => {
+        document.title = "Dashboard | Management"
     })
-  
- 
+
+
     return (
         <div>
             <div className='lg:flex rounded-lg mb-4 p-4 bg-slate-600 justify-between'>
@@ -27,7 +27,7 @@ const VolunteerContentManag = () => {
             <div>
                 <div className='space-y-8 '>
                     {
-                        blogs.map(item => <div key={item._id} className="card card-side bg-base-300 shadow-xl">
+                        blogs.map(item => <div key={item._id} className="card lg:card-side bg-base-300 shadow-xl">
                             <figure><img className='w-96 h-full' src={item.img} alt="Movie" /></figure>
                             <div className="card-body">
                                 <h2 className="card-title font-semibold text-3xl text-red-200">{item.title}</h2>
@@ -35,8 +35,8 @@ const VolunteerContentManag = () => {
                                 <h1 className='text-stone-400'><span className='font-bold'>Publish Date:</span> <span className='underline'>{item.publishDate}</span></h1>
                                 <h1 className='sm-btn '><span>Status :- </span>{item.status}</h1>
                                 <div className="card-actions justify-end">
-                                <Link to={`/dashboard/updateBlog/${item._id}`}><button className="btn font-bold btn-sm btn-outline border-0 border-b-2"><li><a>Edit</a></li></button>
-                                </Link> 
+                                    <Link to={`/dashboard/updateBlog/${item._id}`}><button className="btn font-bold btn-sm btn-outline border-0 border-b-2"><li><a>Edit</a></li></button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>)

@@ -18,7 +18,7 @@ const Navbar = () => {
     }
     const Navlink = <>
         <Link to='/Alldonation'><li className='shadow-md shadow-stone-300 rounded-lg'><a>donation requests</a></li></Link>
-        <Link to='/blog'><li className='shadow-md shadow-stone-300 ml-4 rounded-lg'><a>Blog</a></li></Link>
+        <Link to='/blog'><li className='shadow-md shadow-stone-300 lg:ml-4 rounded-lg'><a>Blog</a></li></Link>
         {/* <Link to='/dashboard'><li><a>Dashboard</a></li></Link> */}
     </>
     return (
@@ -29,18 +29,18 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box lg:w-52">
                             {Navlink}
                         </ul>
                     </div >
-                    <Link to='/'><a className="btn btn-ghost text-3xl  shadow-md shadow-red-100"><img className='w-12   rounded' src={bloodWave} alt="" /><span className="text-red-600  font-bold">Blood</span><span className="text-black font-bold">Wave</span></a></Link>
+                    <Link to='/'><a className="btn btn-ghost lg:text-3xl  shadow-md shadow-red-100"><img className='w-12   rounded' src={bloodWave} alt="" /><span className="text-red-600  font-bold">Blood</span><span className="text-black font-bold">Wave</span></a></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {Navlink}
                     </ul>
                 </div>
-                <div className="navbar-end ">
+                <div className="lg:navbar-end ">
 
                     {user ? <> <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -66,7 +66,7 @@ const Navbar = () => {
                         </ul>
                     </div></> : 
                     < > 
-                   <Link to='/login'><a className="btn btn-outline shadow-lg shadow-slate-200 text-white border-0 font-bold lg:mr-4">Login</a></Link>
+                   <Link to='/login'><a className="btn btn-outline shadow-lg shadow-slate-200 text-white border-b-4 border-0 font-bold lg:mr-4">Login</a></Link>
                    <Link to='/registration'><a className="btn btn-outline shadow-lg shadow-slate-200 text-white font-bold border-0 border-b-4">Sign Up</a></Link> 
                     </>}
                 </div>

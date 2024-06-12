@@ -3,15 +3,15 @@ import { FaAngleRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import useBlog from '../../Hooks/useBlog';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import Swal from 'sweetalert2'; 
+import Swal from 'sweetalert2';
 
 
 const ContentManage = () => {
-    const [blogs, , refetch] = useBlog() 
+    const [blogs, , refetch] = useBlog()
     const axiosSecure = useAxiosSecure()
 
-    useEffect(()=>{
-        document.title  = "Dashboard | Manage"
+    useEffect(() => {
+        document.title = "Dashboard | Manage"
     })
 
     // Publish toggle
@@ -107,8 +107,8 @@ const ContentManage = () => {
             </div>
             <div className='space-y-8 '>
                 {
-                    blogs.map(item => <div key={item._id} className="card card-side bg-base-300 shadow-xl">
-                        <figure><img className='w-96 h-full' src={item.img} alt="Movie" /></figure>
+                    blogs.map(item => <div key={item._id} className="card lg:card-side bg-base-300 shadow-xl">
+                        <figure><img className='lg:w-96 lg:h-full' src={item.img} alt="Movie" /></figure>
                         <div className="card-body">
                             <h2 className="card-title font-semibold text-3xl text-red-200">{item.title}</h2>
                             <p className='text-red-50'>{item.description?.slice(0, 150)}</p>

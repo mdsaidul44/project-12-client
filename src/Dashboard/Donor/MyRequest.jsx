@@ -10,19 +10,19 @@ const MyRequest = () => {
     useEffect(()=>{
         document.title  = "Dashboard | All Request"
     })
-    return (
+    return ( 
         <div>
 
             <div className='lg:flex bg-slate-600 p-4 mb-10 rounded-lg justify-between'>
-                <div>
+                <div className='p-2 shadow-lg shadow-slate-800'>
                     <h1 className='text-stone-800 font-bold'>Donor Dashboard</h1>
                     <p className='flex gap-2 font-semibold'>My Request <FaAngleRight className='mt-1.5' /> Dashboard</p>
                 </div>
                 <div>
-                    <h1 className='text-2xl font-bold text-stone-800 uppercase p-4 text-center'>My Request</h1>
+                    <h1 className='shadow-lg shadow-slate-800 text-2xl font-bold text-stone-800 uppercase p-4 text-center'>My Request</h1>
                 </div>
                 <div>
-                    <Link to='/Alldonation'> <button className='btn-sm btn btn-outline border-0 border-b-4 text-black mt-4 bg-slate-200'>All donation Requests</button></Link>
+                    <Link to='/Alldonation'> <button className=' shadow-lg shadow-slate-800 btn-sm btn btn-outline border-0 border-b-4 text-black mt-4 bg-slate-200'>All donation Requests</button></Link>
                 </div>
             </div>
             <div className="overflow-x-auto bg-gray-800 ">

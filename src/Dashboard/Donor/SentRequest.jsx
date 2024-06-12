@@ -48,18 +48,18 @@ const SentRequest = () => {
     }
     return (
         <div>
-            <div className='lg:flex justify-between bg-slate-500 mb-10 p-4 rounded-lg'>
-                <div>
+            <div className='lg:flex justify-between bg-slate-600 mb-10 p-4 rounded-lg'>
+                <div className="p-2 shadow-lg shadow-slate-900">
                     <h1 className='text-stone-800  font-bold'>Donor Dashboard</h1>
                     <p className='flex gap-2 font-semibold'>Sent Request <FaAngleRight className='mt-1.5' /> Dashboard</p>
                 </div>
                 <div>
-                    <h1 className='text-2xl font-bold text-stone-800 uppercase p-4 text-center'>Sent Request</h1>
+                    <h1 className='text-2xl font-bold shadow-lg shadow-slate-800 text-stone-800 uppercase p-4 text-center'>Sent Request</h1>
                 </div>
             </div>
             <div className="bg-slate-900 p-8 rounded-lg">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="flex gap-6">
+                    <div className="lg:flex gap-6">
                         <label className="form-control w-full my-6">
                             <div className="label">
                                 <span className="label-text">Requester Name</span>
@@ -73,7 +73,7 @@ const SentRequest = () => {
                             <input {...register("RequesterEmail", { required: true })} type="email" placeholder="Requester Email" defaultValue={user?.email} className="input input-bordered w-full " required />
                         </label>
                     </div>
-                    <div className="flex gap-6">
+                    <div className="lg:flex gap-6">
                         {/* Recipient name field */}
                         <label className="form-control w-full">
                             <div className="label">
@@ -108,7 +108,7 @@ const SentRequest = () => {
                             </select>
                         </label>
                     </div>
-                    <div className="flex gap-6">
+                    <div className="lg:flex gap-6">
                         {/* category field */}
                         <label className="form-control w-full">
                             <div className="label">
@@ -192,7 +192,7 @@ const SentRequest = () => {
                             </select>
                         </label>
                     </div>
-                    <div className="flex my-6 gap-6">
+                    <div className="lg:flex my-6 gap-6">
                         {/* donation date field */}
                         <label className="form-control w-full">
                             <div className="label">

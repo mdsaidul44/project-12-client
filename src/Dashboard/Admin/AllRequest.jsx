@@ -122,7 +122,7 @@ const AllRequest = () => {
      
     return (
         <div className="bg-gray-900 p-4 rounded-lg">
-             <div className='flex justify-between mb-10 bg-slate-800 p-4 rounded-lg'>
+             <div className='lg:flex justify-between mb-10 bg-slate-800 p-4 rounded-lg'>
                 <div className="shadow-lg shadow-black p-2">
                     <h1 className='text-stone-400 font-bold'>Dashboard</h1>
                     <p className='flex gap-2 font-semibold'>All Requests <FaAngleRight className='mt-1.5' /> Dashboard</p>

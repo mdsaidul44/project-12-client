@@ -11,27 +11,27 @@ const EditRequest = () => {
     // console.log(donorRequest) 
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
-    useEffect(()=>{
-        document.title  = "Dashboard | Edit"
+    useEffect(() => {
+        document.title = "Dashboard | Edit"
 
     })
 
     const onSubmit = async (data) => {
         // console.log(data)
-        const updateReq = { 
-              requesterName: data.requesterName,
-              requesterEmail: data.requesterEmail,
-              recipientName: data.recipientName,
-              recipientAddress: data.recipientAddress, 
-              donationDate: data.donationDate,
-              donationTime: data.donationTime,
-              bloodGroup: data.bloodGroup,
-              requestMessage: data.requestMessage, 
-              status: 'pending' 
-          }
-        const res = await axiosPublic.patch(`/requests/${donorRequest._id}`,updateReq)
+        const updateReq = {
+            requesterName: data.requesterName,
+            requesterEmail: data.requesterEmail,
+            recipientName: data.recipientName,
+            recipientAddress: data.recipientAddress,
+            donationDate: data.donationDate,
+            donationTime: data.donationTime,
+            bloodGroup: data.bloodGroup,
+            requestMessage: data.requestMessage,
+            status: 'pending'
+        }
+        const res = await axiosPublic.patch(`/requests/${donorRequest._id}`, updateReq)
         // console.log(res.data)
-        if(res.data.modifiedCount > 0){
+        if (res.data.modifiedCount > 0) {
             // show success popup
             reset()
             Swal.fire({
@@ -40,22 +40,22 @@ const EditRequest = () => {
                 title: ` is Updated to the menu `,
                 showConfirmButton: false,
                 timer: 1500
-              });
+            });
         }
 
     }
-    return ( 
+    return (
         <div>
             <div>
                 <h1 className="text-3xl text-center mx-auto rounded-lg font-semibold text-white p-4 w-96 bg-gray-800 underline">Request Update Now</h1>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex gap-6">
+                <div className="lg:flex gap-6">
                     <label className="form-control w-full my-6">
                         <div className="label">
                             <span className="label-text">Requester Name</span>
                         </div>
-                        <input {...register("requesterName", { required: true })} defaultValue={donorRequest.requesterName} type="text" placeholder="Requester Name"  className="input input-bordered w-full " required />
+                        <input {...register("requesterName", { required: true })} defaultValue={donorRequest.requesterName} type="text" placeholder="Requester Name" className="input input-bordered w-full " required />
                     </label>
                     <label className="form-control w-full my-6">
                         <div className="label">
@@ -64,7 +64,7 @@ const EditRequest = () => {
                         <input {...register("requesterEmail", { required: true })} defaultValue={donorRequest.requesterEmail} type="email" placeholder="Requester Email" className="input input-bordered w-full " required />
                     </label>
                 </div>
-                <div className="flex gap-6">
+                <div className="lg:flex gap-6">
                     {/* Recipient name field */}
                     <label className="form-control w-full">
                         <div className="label">
@@ -79,8 +79,8 @@ const EditRequest = () => {
                         </div>
                         <input defaultValue={donorRequest.recipientAddress}  {...register("recipientAddress", { required: true })} type="text" placeholder="Recipient Address" className="input input-bordered w-full " />
                     </label>
-                </div>  
-                <div className="flex my-6 gap-6">
+                </div>
+                <div className="lg:flex my-6 gap-6">
                     {/* donation date field */}
                     <label className="form-control w-full">
                         <div className="label">
@@ -93,7 +93,7 @@ const EditRequest = () => {
                         <div className="label">
                             <span className="label-text">Donation Time</span>
                         </div>
-                        <input  defaultValue={donorRequest.donationTime}  {...register("donationTime", { required: true })} type="time" placeholder="Recipient Address" className="input input-bordered w-full " />
+                        <input defaultValue={donorRequest.donationTime}  {...register("donationTime", { required: true })} type="time" placeholder="Recipient Address" className="input input-bordered w-full " />
                     </label>
                     {/* blood group field */}
                     <label className="form-control w-full">

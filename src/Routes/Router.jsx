@@ -28,6 +28,7 @@ import UpdateBlog from "../Dashboard/Admin/UpdateBlog";
 import Contact from "../Dashboard/Admin/Contact";
 import AllDonorReq from "../Dashboard/Volunteer/AllDonorReq";
 import VolunteerContentManag from "../Dashboard/Volunteer/VolunteerContentManag";
+import Payment from "../Dashboard/Payment";
  
 
   const router = createBrowserRouter([
@@ -98,6 +99,10 @@ import VolunteerContentManag from "../Dashboard/Volunteer/VolunteerContentManag"
           path: 'contact',
           element: <Contact/>
         },
+        {
+          path: 'payment',
+          element: <Payment/>
+        },
         // admin user
         {
           path: 'adminhome',
@@ -114,7 +119,7 @@ import VolunteerContentManag from "../Dashboard/Volunteer/VolunteerContentManag"
         {
           path: 'contentmanage',
           element:<AdminRouter><ContentManage/></AdminRouter>
-        },  
+        }, 
         {
           path: 'updateBlog/:id',
           element: <AdminRouter><UpdateBlog/></AdminRouter>,
