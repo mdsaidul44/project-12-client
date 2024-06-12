@@ -16,11 +16,25 @@ const AllDonationRequest = () => {
     }, [])
 
     return (
-        <div className="bg-gray-900 p-4 rounded-lg">
+        <div className=""> 
+            <div className='lg:flex rounded-lg lg:h-96 mb-10 bg-slate-600'>
+                <div className='lg:w-1/2 mt-10 gap-4 p-10 lg:flex '>
+                    <div>
+                        <img className='rounded-full shadow-lg shadow-black w-40' src="https://i.ibb.co/72r555M/39.jpg" alt="" />
+                    </div>
+                    <div  className='mt-8 '>
+                        <h1 className='text-2xl font-bold text-teal-500 mb-2 shadow-md shadow-teal-400'>All Blood Request</h1>
+                        <h1 className='text-blue-300 underline'>A blood donation occurs when a person voluntarily has blood drawn and used for transfusions and/or made into</h1> 
+                    </div>
+                </div>
+                <div className='lg:w-1/2 '>
+                    <img className='rounded-lg h-96' src="https://i.ibb.co/4frsfVH/2148504543.jpg" alt="" />
+                </div>
+            </div> 
             <div>
-                <h1 className='text-3xl text-center font-bold  pt-32 pb-10 text-sky-200 underline'>All Request Page</h1>
+            <h1 className='text-2xl font-bold text-center  text-teal-500 mb-8 shadow-md shadow-teal-400'>All Donation Request</h1>
             </div>
-            <div className="overflow-x-auto ">
+            <div className="overflow-x-auto bg-gray-900 p-4 rounded-lg">
                 <table className=" table text-xl">
                     {/* head */}
                     <thead>

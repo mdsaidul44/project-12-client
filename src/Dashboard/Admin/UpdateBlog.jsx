@@ -4,52 +4,42 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { useLoaderData } from 'react-router-dom';
 import { FaAngleRight } from 'react-icons/fa';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+ 
 const UpdateBlog = () => {
     const blogs = useLoaderData()
     console.log(blogs)
     const { register, handleSubmit, reset } = useForm()
-    const axiosSecure = useAxiosSecure()
-
-
+    const axiosSecure = useAxiosSecure() 
+    const axiosPublic = useAxiosPublic()
     // Edit toggle
     const onSubmit = async (data) => {
         console.log("this is data field", data)
 
-        const imageFile = { image: data.image[0] } 
-        const res = await axiosSecure.patch(image_hosting_api, imageFile, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        });
-
- 
+         
             const blogUpdate = {
                 title: data.title,
-                img: res.data.data.display_url,
-                content: data.content,
+                img: data.image,
+                description: data.content,
                 publishDate: data.date,
                 status: "Dreft"
             }
-
-            const blogUpd = await axiosSecure.patch(`/blogs/${blogs._id}`, blogUpdate)
-            console.log(blogUpd.data)
-                .then(res => {
-                    console.log(res.data)
-                    if (blogUpd.data.modifiedCount) {
-                        refetch()
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "Updated successfully",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }
-                })
+ 
+            const res= await axiosPublic.patch(`/blogs/${blogs._id}`, blogUpdate)
+            console.log(res)
+                if (res.data.modifiedCount > 0) {
+                    
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Updated successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }  
+                    
 
         }
  
@@ -92,7 +82,7 @@ const UpdateBlog = () => {
                                 <div className="label">
                                     <span className="label-text text-black">Image File</span>
                                 </div>
-                                <input type="file" {...register("image", { required: true })} className="file-input w-full   bg-gray-400" />
+                                <input type="text" {...register("image", { required: true })} defaultValue={blogs.img} className="input w-full text-black  bg-gray-400" />
                             </label>
                         </div>
                         {/* description box */}

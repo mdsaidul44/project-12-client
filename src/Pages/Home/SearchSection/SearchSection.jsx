@@ -1,12 +1,17 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useRequest from "../../../Hooks/useRequest";
+import { useEffect, useState } from "react";
 
 
 const SearchSection = () => {
     const { register, handleSubmit, reset } = useForm()
-
+    const [requests] =useRequest()
+    const [reRequest,setReRequest] = useState()
+    // console.log(reRequest)
+    
     const onSubmit = (data) => {
-        console.log(data)
+        setReRequest(requests.filter(data => data.district.toLowerCase().includes(data)))
     }
     return (
         <div className="my-20 ">
