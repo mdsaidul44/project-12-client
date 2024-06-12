@@ -66,8 +66,8 @@ const Navbar = () => {
                         </ul>
                     </div></> : 
                     < > 
-                   <Link to='/login'><a className="btn btn-outline text-black border-0 border-b-4 lg:mr-4">Login</a></Link>
-                   <Link to='/registration'><a className="btn btn-outline text-black border-0 border-b-4">Sign Up</a></Link> 
+                   <Link to='/login'><a className="btn btn-outline shadow-lg shadow-slate-200 text-white border-0 font-bold lg:mr-4">Login</a></Link>
+                   <Link to='/registration'><a className="btn btn-outline shadow-lg shadow-slate-200 text-white font-bold border-0 border-b-4">Sign Up</a></Link> 
                     </>}
                 </div>
             </div>

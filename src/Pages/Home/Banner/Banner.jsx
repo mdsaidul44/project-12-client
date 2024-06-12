@@ -3,7 +3,7 @@ import { GoArrowRight } from "react-icons/go";
 const Banner = () => {
     return (
         <div>
-            <div className="hero rounded-lg"  style={{ backgroundImage: 'url(https://i.ibb.co/GfmSjyk/seo-341-bs-donorship-7490684-1200x675.jpg)' }}>
+            <div className="hero rounded-lg "  style={{ backgroundImage: 'url(https://i.ibb.co/GfmSjyk/seo-341-bs-donorship-7490684-1200x675.jpg)' }}>
                 <div className="hero-overlay bg-opacity-70"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="mt-16 h-[300px] max-w-md">

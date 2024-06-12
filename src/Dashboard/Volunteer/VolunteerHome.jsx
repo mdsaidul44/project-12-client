@@ -4,14 +4,11 @@ import { HiCurrencyDollar } from 'react-icons/hi';
 import { VscGitPullRequestGoToChanges } from 'react-icons/vsc';
 import useAuth from '../../Hooks/useAuth';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
-import useUser from '../../Hooks/useUser';
 import { FaAngleRight } from 'react-icons/fa';
 
 const VolunteerHome = () => {
 
-    const { user } = useAuth()
-    const [users] = useUser()
-    console.log(users)
+    const { user } = useAuth()  
     const axiosPublic = useAxiosPublic()
     const [requests, setRequests] = useState([])
 
@@ -36,15 +33,7 @@ const VolunteerHome = () => {
             </div>
             <div className='divider'></div>
             <div>
-                <div className="lg:stats shadow-black shadow-2xl  sm:stats  "> 
-                    <div className="stat">
-                        <div className="stat-figure text-2xl text-red-600">
-                            <BiDonateBlood /> 
-                        </div>
-                        <div className="lg:stat-title ">Total Donors</div>
-                        <div className="stat-value">{users.length}</div>
-                        <div className="lg:stat-desc">Jan 1st - Feb 1st</div>
-                    </div> 
+                <div className="lg:stats shadow-black shadow-2xl  sm:stats  ">  
                     <div className="stat">
                         <div className="stat-figure text-2xl text-red-600">
                         <VscGitPullRequestGoToChanges/>

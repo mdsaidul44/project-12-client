@@ -63,13 +63,10 @@ const Registration = () => {
     }
 
     return (
-        <div>
-            <div className="text-center my-10 text-gray-300">
-                <h1 className="text-4xl font-semibold">Please Registration</h1>
-            </div>
+        <div> 
             <div className="lg:flex   bg-slate-400 rounded-lg gap-2 p-6 ">
                 <div className="lg:w-1/2">
-                    <img className="h-full rounded-lg" src="https://i.ibb.co/PYjnkyF/cute-cartoon-blood-drop-having-blood-transfusion-vector.jpg" alt="" />
+                    <img className="h-full rounded-lg" src="https://i.ibb.co/j6WBfyX/images-35.jpg" alt="" />
                 </div>
                 <div className=" bg-slate-700 text-white rounded-lg lg:p-10 p-4 lg:w-1/2">
                     <div className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg '>

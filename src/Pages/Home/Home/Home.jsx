@@ -1,5 +1,6 @@
 import Banner from "../Banner/Banner";
 import Contact from "../Contact/Contact";
+import SearchSection from "../SearchSection/SearchSection";
 import Slider from "../Slider/Slider"; 
 
  
@@ -8,6 +9,7 @@ const Home = () => {
     return (
         <div>
             <div><Slider/></div>
+            <div><SearchSection/></div>
             <div><Banner/></div>
             <div className="my-20"><Contact/></div>
         </div>

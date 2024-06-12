@@ -43,9 +43,9 @@ const Dashboard = () => {
                     {isAdmin  ?
                         <>
                             <li className="font-bold shadow-lg hover:shadow-black mt-4 mb-2 rounded-lg"><NavLink to='/dashboard/adminhome'><FaHome />ADMIN HOME </NavLink></li>
-                            <li className="font-bold shadow-lg hover:shadow-black mt-4 mb-2 rounded-lg"><NavLink to='/dashboard/allusers'><FaUsers />ALL USERS</NavLink></li>
-                            <li className="font-bold shadow-lg hover:shadow-black mt-4 mb-2 rounded-lg"><NavLink to='/dashboard/allrequest'><BsSendCheckFill />ALL REQUEST</NavLink></li>  
-                            <li className="font-bold shadow-lg hover:shadow-black mt-4 mb-2 rounded-lg"><NavLink to='/dashboard/contentmanage'><MdOutlineManageSearch />CONTENT MANAGEMENT</NavLink></li>
+                            <li className="font-bold shadow-lg hover:shadow-black mb-2 rounded-lg"><NavLink to='/dashboard/allusers'><FaUsers />ALL USERS</NavLink></li>
+                            <li className="font-bold shadow-lg hover:shadow-black mb-2 rounded-lg"><NavLink to='/dashboard/allrequest'><BsSendCheckFill />ALL REQUEST</NavLink></li>  
+                            <li className="font-bold shadow-lg hover:shadow-black mb-2 rounded-lg"><NavLink to='/dashboard/contentmanage'><MdOutlineManageSearch />CONTENT MANAGEMENT</NavLink></li>
                         </>
                         : isVolunteer  ?
                             <>
@@ -55,7 +55,7 @@ const Dashboard = () => {
                             </>
                             : user &&
                             <>
-                                <li className="shadow-lg hover:shadow-black font-bold rounded-lg"><NavLink to='/dashboard/homepage mb-2'><FaHome />HOME PAGE</NavLink></li>
+                                <li className="shadow-lg hover:shadow-black font-bold rounded-lg mb-2"><NavLink to='/dashboard/homepage'><FaHome />HOME PAGE</NavLink></li>
                                 <li className="shadow-lg hover:shadow-black mb-2 font-bold rounded-lg"><NavLink to='/dashboard/sentrequest'><BsFillRocketTakeoffFill />Sent Request</NavLink></li>
                                 <li className="shadow-lg hover:shadow-black font-bold rounded-lg"><NavLink to='/dashboard/myrequest'><BsSendCheckFill />My Request</NavLink></li>
                             </>

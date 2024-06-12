@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 const AllUsersPage = () => {
     const axiosSecure = useAxiosSecure()
     const [users, loading, refetch] = useUser()
-    // console.log(users)
+    console.log(users)
 
     // user status block 
     const handleBlockUser = async (data) => {
@@ -122,7 +122,7 @@ const AllUsersPage = () => {
     }
 
     return (
-        <div className='p-4 bg-gray-700 rounded-lg '>
+        <div className='p-4 bg-gray-900 rounded-lg '>
             <div className='flex justify-between shadow-lg shadow-black bg-slate-800 p-4 rounded-lg'>
                 <div className='shadow-lg shadow-slate-500 p-2'>
                     <h1 className='text-stone-400 font-bold'>Admin / Dashboard</h1>
