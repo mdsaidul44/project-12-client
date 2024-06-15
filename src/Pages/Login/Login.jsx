@@ -10,10 +10,10 @@ const Login = () => {
     const navigate = useNavigate()
 
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         loginUser(data.email,data.password)
         .then(result => {
-            console.log(result.user)
+            // console.log(result.user)
             Swal.fire({
                 position: "top-end",
                 icon: "success",

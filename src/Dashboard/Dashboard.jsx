@@ -60,8 +60,8 @@ const Dashboard = () => {
                             : user &&
                             <>
                                 <li className="shadow-lg hover:shadow-black font-bold rounded-lg mb-2"><NavLink to='/dashboard/homepage'><FaHome />HOME PAGE</NavLink></li>
-                                <li className="shadow-lg hover:shadow-black mb-2 font-bold rounded-lg"><NavLink to='/dashboard/sentrequest'><BsFillRocketTakeoffFill />Sent Request</NavLink></li>
-                                <li className="shadow-lg hover:shadow-black font-bold rounded-lg"><NavLink to='/dashboard/myrequest'><BsSendCheckFill />My Request</NavLink></li>
+                                <li className="shadow-lg hover:shadow-black mb-2 font-bold rounded-lg"><NavLink to='/dashboard/sentrequest'><BsFillRocketTakeoffFill />SENT REQUEST</NavLink></li>
+                                <li className="shadow-lg hover:shadow-black font-bold rounded-lg"><NavLink to='/dashboard/myrequest'><BsSendCheckFill />My DONATION Request</NavLink></li>
                             </>
                     }
 

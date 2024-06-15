@@ -56,7 +56,7 @@ import Payment from "../Dashboard/Payment";
         {
           path: 'blogdetails/:id',
           element: <BlogDetails/>,
-          loader: ({params})=>fetch(`http://localhost:5000/blog/${params.id}`)
+          loader: ({params})=>fetch(`https://my-assignment12-server-seven.vercel.app/blog/${params.id}`)
         },
         {
           path: 'alldonation',
@@ -88,12 +88,12 @@ import Payment from "../Dashboard/Payment";
         {
           path: 'editrequests/:id',
           element: <EditRequest/>,
-          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
+          loader: ({params})=>fetch(`https://my-assignment12-server-seven.vercel.app/requests/${params.id}`)
         },
         {
           path: 'details/:id',
           element: <DetailsRequest/>,
-          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
+          loader: ({params})=>fetch(`https://my-assignment12-server-seven.vercel.app/requests/${params.id}`)
         }, 
         {
           path: 'contact',
@@ -123,7 +123,7 @@ import Payment from "../Dashboard/Payment";
         {
           path: 'updateBlog/:id',
           element: <AdminRouter><UpdateBlog/></AdminRouter>,
-          loader: ({params})=> fetch(`http://localhost:5000/blog/${params.id}`)
+          loader: ({params})=> fetch(`https://my-assignment12-server-seven.vercel.app/blog/${params.id}`)
         }, 
         // volunteer user
         {

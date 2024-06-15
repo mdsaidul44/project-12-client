@@ -7,15 +7,15 @@ import Aos from "aos";
 
 
 const AllRequest = () => {
-    const axiosSecure = useAxiosSecure() 
-    const [requests,,refetch] = useAllRequest()
-    useEffect(()=>{
-        document.title  = "Dashboard | All request"
+    const axiosSecure = useAxiosSecure()
+    const [requests, , refetch] = useAllRequest()
+    useEffect(() => {
+        document.title = "Dashboard | All request"
 
     })
 
     // Request Pending Toggle
-    const handlePendingRequest =async(data) =>{
+    const handlePendingRequest = async (data) => {
         console.log('data paici', data)
 
         const request = {
@@ -40,7 +40,7 @@ const AllRequest = () => {
     }
 
     // Request Inprogress Toggle
-    const handleInprogressRequest =async(data) =>{
+    const handleInprogressRequest = async (data) => {
         console.log('data paici', data)
 
         const request = {
@@ -65,7 +65,7 @@ const AllRequest = () => {
     }
 
     // Request Done Toggle
-    const handleDoneRequest =async(data) =>{
+    const handleDoneRequest = async (data) => {
         console.log('data paici', data)
 
         const request = {
@@ -116,13 +116,13 @@ const AllRequest = () => {
 
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         Aos.init()
     })
-     
+
     return (
         <div className="bg-gray-900 p-4 rounded-lg">
-             <div className='lg:flex justify-between mb-10 bg-slate-800 p-4 rounded-lg'>
+            <div className='lg:flex justify-between mb-10 bg-slate-800 p-4 rounded-lg'>
                 <div className="shadow-lg shadow-black p-2">
                     <h1 className='text-stone-400 font-bold'>Dashboard</h1>
                     <p className='flex gap-2 font-semibold'>All Requests <FaAngleRight className='mt-1.5' /> Dashboard</p>
@@ -130,7 +130,7 @@ const AllRequest = () => {
                 <div>
                     <h1 className='text-2xl font-bold shadow-lg shadow-black text-stone-400 uppercase p-4 text-center'> All Donor Requests</h1>
                 </div>
-            </div>
+            </div> 
             <div className="overflow-x-auto bg-slate-800 p-2">
                 <table className="table text-xl">
                     {/* head */}
@@ -191,15 +191,15 @@ const AllRequest = () => {
                                         <div tabIndex={0} role="button" className="btn btn-sm btn-outline border-0 border-b-2 m-1">Manage</div>
                                         <ul tabIndex={0} className="dropdown-content z-[1] menu  gap-2 shadow bg-base-100 rounded-box w-32">
                                             {
-                                                request.status === 'pending' ? "" : <button onClick={()=>handlePendingRequest(request)} className="btn btn-sm btn-outline border-0 border-b-2"><li><a>Pending</a></li></button>
-                                            } 
+                                                request.status === 'pending' ? "" : <button onClick={() => handlePendingRequest(request)} className="btn btn-sm btn-outline border-0 border-b-2"><li><a>Pending</a></li></button>
+                                            }
                                             {
-                                               request.status === 'Inprogress' ? "" :   <button onClick={()=>handleInprogressRequest(request)} className="btn btn-sm btn-outline border-0 border-b-2"><li><a>Inprogress</a></li></button>
-                                            } 
+                                                request.status === 'Inprogress' ? "" : <button onClick={() => handleInprogressRequest(request)} className="btn btn-sm btn-outline border-0 border-b-2"><li><a>Inprogress</a></li></button>
+                                            }
                                             {
-                                              request.status === 'Done' ? "" :   <button onClick={()=>handleDoneRequest(request)} className="btn btn-sm btn-outline border-0 border-b-2"><li><a>Done</a></li></button> 
-                                                }
-                                            <button onClick={()=>handleCancelRequest(request)} className="btn btn-sm btn-outline border-0 border-b-2"><li><a>Cancel</a></li></button> 
+                                                request.status === 'Done' ? "" : <button onClick={() => handleDoneRequest(request)} className="btn btn-sm btn-outline border-0 border-b-2"><li><a>Done</a></li></button>
+                                            }
+                                            <button onClick={() => handleCancelRequest(request)} className="btn btn-sm btn-outline border-0 border-b-2"><li><a>Cancel</a></li></button>
                                         </ul>
                                     </div>
                                 </th>
