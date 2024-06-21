@@ -11,8 +11,7 @@ const Home = () => {
     },[])
     return (
         <div>
-            <div><Slider/></div>
-            <div><SearchSection/></div>
+            <div><Slider/></div> 
             <div><Banner/></div>
             <div className="my-20"><Contact/></div>
         </div>

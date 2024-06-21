@@ -10,7 +10,7 @@ const Main = () => {
 
     const noNavbarFooter = location.pathname.includes('login') || location.pathname.includes('registration')
     return (
-        <div>
+        <div className="overflow-hidden ">
             <div  >
                { noNavbarFooter || <Navbar />}
             </div>

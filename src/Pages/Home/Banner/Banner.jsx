@@ -22,7 +22,7 @@ const Banner = () => {
                         <p data-aos="fade-right"  data-aos-duration="1500"   className="mb-5">Blood Wave is a platform that connects blood donors with recipients, ensuring a reliable blood supply for emergencies and medical needs. organizes drives, and educates the public on the importance of blood donation.</p>
                         <div className="flex justify-evenly">
                         <Link to='/registration'><button data-aos="fade-up"  data-aos-duration="1000"  className="btn  text-black font-bold btn-outline border-0 border-b-4 ">Join as a Donor<GoArrowRight className="text-xl"/></button></Link>
-                        <button  data-aos="fade-up"  data-aos-duration="1000" className="btn text-black font-bold btn-outline border-0 border-b-4">Search Donors<GoArrowRight className="text-xl"/></button>
+                       <Link to='/search'> <button  data-aos="fade-up"  data-aos-duration="1000" className="btn text-black font-bold btn-outline border-0 border-b-4">Search Donors<GoArrowRight className="text-xl"/></button></Link>
                         </div>
                     </div>
                 </div>

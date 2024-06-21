@@ -29,6 +29,8 @@ import Contact from "../Dashboard/Admin/Contact";
 import AllDonorReq from "../Dashboard/Volunteer/AllDonorReq";
 import VolunteerContentManag from "../Dashboard/Volunteer/VolunteerContentManag";
 import Payment from "../Dashboard/Payment";
+import SearchSection from "../Pages/Home/SearchSection/SearchSection";
+import AllDonatinRequestDetails from "../components/AllDonaton/AllDonatinRequestDetails";
  
 
   const router = createBrowserRouter([
@@ -56,15 +58,24 @@ import Payment from "../Dashboard/Payment";
         {
           path: 'blogdetails/:id',
           element: <BlogDetails/>,
-          loader: ({params})=>fetch(`https://my-assignment12-server-seven.vercel.app/blog/${params.id}`)
+          loader: ({params})=>fetch(`http://localhost:5000/blog/${params.id}`)
         },
         {
           path: 'alldonation',
           element: <AllDonationRequest/>
         },
         {
+          path: 'search',
+          element: <SearchSection/>
+        },
+        {
           path: 'addblog',
           element: <PrivateRouter><AddBlog/></PrivateRouter>
+        },
+        {
+          path: 'donationDetails/:id',
+          element: <AllDonatinRequestDetails/>,
+          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
         }
       ]
     },
@@ -88,12 +99,12 @@ import Payment from "../Dashboard/Payment";
         {
           path: 'editrequests/:id',
           element: <EditRequest/>,
-          loader: ({params})=>fetch(`https://my-assignment12-server-seven.vercel.app/requests/${params.id}`)
+          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
         },
         {
           path: 'details/:id',
           element: <DetailsRequest/>,
-          loader: ({params})=>fetch(`https://my-assignment12-server-seven.vercel.app/requests/${params.id}`)
+          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
         }, 
         {
           path: 'contact',
@@ -123,7 +134,7 @@ import Payment from "../Dashboard/Payment";
         {
           path: 'updateBlog/:id',
           element: <AdminRouter><UpdateBlog/></AdminRouter>,
-          loader: ({params})=> fetch(`https://my-assignment12-server-seven.vercel.app/blog/${params.id}`)
+          loader: ({params})=> fetch(`http://localhost:5000/blog/${params.id}`)
         }, 
         // volunteer user
         {

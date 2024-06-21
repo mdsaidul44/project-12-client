@@ -1,28 +1,24 @@
-import { useEffect, useState } from "react";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useEffect } from "react";
 import Aos from "aos";
+import useAllRequest from "../../Hooks/useAllRequest";
+import { FaLocationDot } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 
 
-const AllDonationRequest = () => {
-    const axiosPublic = useAxiosPublic()
-    const [requests, setRequests] = useState([])
-
-    useEffect(() => {
-        axiosPublic.get('/request')
-            .then(res => {
-                // console.log(res.data)
-                setRequests(res.data)
-            })
+const AllDonationRequest = () => { 
+    const [requests] = useAllRequest()
+    const requestPending = requests.filter(request=> request.status === 'pending')
+    // console.log(requestPending)
+    useEffect(() => { 
      document.title  = "Home | All Request"
-    }, []) 
-    useEffect(()=>{
-        Aos.init()
-    })
+     Aos.init()
+    })  
+
     return (
         <div className=""> 
             <div className='lg:flex rounded-lg lg:h-96 mb-10 bg-slate-600'>
-                <div className='lg:w-1/2 mt-10 gap-4 p-10 lg:flex '>
+                <div className='lg:w-1/2 mt-20 gap-4 p-10 lg:flex '>
                     <div>
                         <img className='rounded-full shadow-lg shadow-black w-40' src="https://i.ibb.co/72r555M/39.jpg" alt="" />
                     </div>
@@ -32,7 +28,7 @@ const AllDonationRequest = () => {
                     </div>
                 </div>
                 <div className='lg:w-1/2 '>
-                    <img className='rounded-lg h-96' src="https://i.ibb.co/4frsfVH/2148504543.jpg" alt="" />
+                    <img className='rounded-lg lg:ml-52   h-96' src="https://i.ibb.co/4frsfVH/2148504543.jpg" alt="" />
                 </div>
             </div> 
             <div>
@@ -42,28 +38,27 @@ const AllDonationRequest = () => {
                 <table className=" table text-xl">
                     {/* head */}
                     <thead>
-                        <tr className='text-white'>
-                            <th  data-aos="fade-down"  data-aos-duration="1500" >Requester Name</th>
-                            <th data-aos="fade-down"  data-aos-duration="1500" >Requester Email</th>
+                        <tr className='text-white'> 
+                            {/* <th data-aos="fade-down"  data-aos-duration="1500" >Requester Email</th> */}
                             <th data-aos="fade-down"  data-aos-duration="1500" >Recipient Name</th>
                             <th data-aos="fade-down"  data-aos-duration="1500" >Recipient Location</th>
-                            <th data-aos="fade-down"  data-aos-duration="1500" >Date</th>
+                            <th data-aos="fade-down"  data-aos-duration="1500" >Date & time</th>
                             <th data-aos="fade-down"  data-aos-duration="1500" >Status</th>
                         </tr>
                     </thead>
                     <tbody className='text-slate-300'>
                         {/* row 1 */}
                         {
-                            requests.map(request => <tr key={request._id} data-aos="fade-left"  data-aos-duration="1000" >
-                                <td className="font-semibold">
+                            requestPending.map(request => <tr key={request._id} data-aos="fade-left"  data-aos-duration="1000" >
+                                {/* <td className="font-semibold">
                                     <div className="flex items-center gap-3">
                                         <div>
                                             <div className="font-semibold">{request.requesterName}</div>
                                             <div className="text-sm  ">Hospital: {request.hospital} </div>
                                         </div>
                                     </div>
-                                </td>
-                                <td className="text-sm underline">{request.requesterEmail}</td>
+                                </td> */}
+                                {/* <td className="text-sm underline">{request.requesterEmail}</td> */}
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div>
@@ -75,9 +70,9 @@ const AllDonationRequest = () => {
                                 <td>
                                     <div className="lg:flex items-center gap-3">
                                         <div>
-                                            <div className="font-semibold">{request.recipientAddress}</div>
-                                            <div className="text-sm my-1">District: {request.district} </div>
-                                            <div className="text-sm  ">Upazila: {request.upazila} </div>
+                                            <div className="underline flex"><FaLocationDot className="mt-1.5 mr-2"/>{request.recipientAddress}</div>
+                                            {/* <div className="text-sm my-1">District: {request.district} </div>
+                                            <div className="text-sm  ">Upazila: {request.upazila} </div> */}
                                         </div>
                                     </div>
                                 </td>
@@ -89,8 +84,9 @@ const AllDonationRequest = () => {
                                         </div>
                                     </div>
                                 </td>
+
                                 <th>
-                                    <button className="btn btn-ghost font-bold  ">{request.status}</button>
+                                    <Link to={`/donationDetails/${request._id}`}><button className="btn btn-ghost font-bold  ">Details</button></Link>
                                 </th>
                             </tr>)
                         }

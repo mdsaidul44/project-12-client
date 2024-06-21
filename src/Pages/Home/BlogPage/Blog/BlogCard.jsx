@@ -14,7 +14,7 @@ const BlogCard = ({blog}) => {
     return (
         <div>
             <div data-aos="fade-left"  data-aos-duration="1500"  className="hero  bg-base-300 rounded-lg">
-                <div className="hero-content flex-col lg:flex-row">
+                <div className="hero-content ">
                     <img data-aos="fade-left"  data-aos-duration="1000"  src={img} className="max-w-sm w-full lg:h-[250px] rounded-lg shadow-2xl" />
                     <div>
                         <h1 data-aos="fade-left"  data-aos-duration="1000"  className="text-2xl font-bold">{title}</h1>

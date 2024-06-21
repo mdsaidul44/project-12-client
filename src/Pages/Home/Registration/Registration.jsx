@@ -66,7 +66,7 @@ const Registration = () => {
         <div> 
             <div className="lg:flex   bg-slate-400 rounded-lg gap-2 p-6 ">
                 <div className="lg:w-1/2">
-                    <img className="h-full rounded-lg" src="https://i.ibb.co/j6WBfyX/images-35.jpg" alt="" />
+                    <img className="h-full w-full rounded-lg" src="https://i.ibb.co/j6WBfyX/images-35.jpg" alt="" />
                 </div>
                 <div className=" bg-slate-700 text-white rounded-lg lg:p-10 p-4 lg:w-1/2">
                     <div className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg '>
