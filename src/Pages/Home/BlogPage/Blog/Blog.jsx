@@ -22,10 +22,10 @@ const Blog = () => {
             <div className="lg:flex lg:h-[420px]  rounded-xl p-4 mt-10 bg-gray-400">
                 <div className="relative lg:w-1/2">
                     <div className="">
-                        <img data-aos="fade-up"  data-aos-duration="2000"  className="w-[400px] rounded-xl" src="https://i.ibb.co/jJWqBbm/images-29.jpg" alt="" />
+                        <img data-aos="fade-up"  data-aos-duration="2000"  className="w-[400px] rounded-xl" src="https://i.ibb.co/gmjbqzC/images-2.jpg" alt="" />
                     </div>
                     <div className="lg:absolute lg:top-44 lg:left-48">
-                        <img data-aos="fade-down"  data-aos-duration="2000"  className="w-[320px] h-52  rounded-xl" src="https://i.ibb.co/9mX8xy8/images-30.jpg" alt="" />
+                        <img data-aos="fade-down"  data-aos-duration="2000"  className="w-[320px] h-52  rounded-xl" src="https://i.ibb.co/bWBQtBp/images-1.jpg" alt="" />
                     </div>
                 </div>
                 <div className="lg:w-1/2 p-10  text-black" >

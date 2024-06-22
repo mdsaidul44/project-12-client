@@ -20,7 +20,7 @@ const AllDonationRequest = () => {
             <div className='lg:flex rounded-lg lg:h-96 mb-10 bg-slate-600'>
                 <div className='lg:w-1/2 mt-20 gap-4 p-10 lg:flex '>
                     <div>
-                        <img className='rounded-full shadow-lg shadow-black w-40' src="https://i.ibb.co/72r555M/39.jpg" alt="" />
+                        <img className='rounded-full shadow-lg shadow-black w-40' src="https://i.ibb.co/jwvymbf/39.jpg.jpg" alt="" />
                     </div>
                     <div  className='mt-8 '>
                         <h1  data-aos="fade-left"  data-aos-duration="1500"  className='text-2xl font-bold text-teal-500 mb-2 shadow-md shadow-teal-400'>All Blood Request</h1>
@@ -28,7 +28,7 @@ const AllDonationRequest = () => {
                     </div>
                 </div>
                 <div className='lg:w-1/2 '>
-                    <img className='rounded-lg lg:ml-52   h-96' src="https://i.ibb.co/4frsfVH/2148504543.jpg" alt="" />
+                    <img className='rounded-lg lg:ml-52   h-96' src="https://i.ibb.co/n3HW39m/2148747847.jpg" alt="" />
                 </div>
             </div> 
             <div>

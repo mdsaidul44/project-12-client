@@ -49,7 +49,7 @@ const Login = () => {
     return (
         <div className=" lg:flex text-white  rounded-xl min-h-screen bg-slate-600 " >
             <div className="lg:w-1/2">
-                <img className=" lg:w-full lg:h-full rounded-lg" src="https://i.ibb.co/xmjx067/22821873-08.jpg" alt="" />
+                <img className=" lg:w-full lg:h-full rounded-lg" src="https://i.ibb.co/dcbGhFv/11436091-4707071.jpg" alt="" />
             </div>
             <div className="lg:w-1/2 lg:py-10"> 
                 <div className=' bg-opacity-60 p-10 lg:px-32'>
