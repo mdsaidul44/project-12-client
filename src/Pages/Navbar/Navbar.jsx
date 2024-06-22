@@ -49,13 +49,13 @@ const Navbar = () => {
                     {user ? <> <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src={user?.photoURL || 'https://i.ibb.co/DppxTgs/52d5d97dd7dd3125df4d7b45d55f2ce3.jpg'} />
+                                <img alt="Tailwind CSS Navbar component" src={user?.photoURL || 'https://i.ibb.co/7V3sQ1n/download-6.jpg'} />
                             </div>
                         </div>
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 bg-slate-800 shadow menu menu-sm dropdown-content rounded-box w-52">
                             <div className="avatar ">
                                 <div className="w-16 rounded-full ring mx-auto my-4 ring-primary ring-offset-base-100 ring-offset-2">
-                                    <img src={user?.photoURL || 'https://i.ibb.co/DppxTgs/52d5d97dd7dd3125df4d7b45d55f2ce3.jpg'} />
+                                    <img src={user?.photoURL || 'https://i.ibb.co/7V3sQ1n/download-6.jpg'} />
                                 </div>
                             </div>
                             <div className="text-center font-bold shadow-lg p-4  shadow-slate-700 rounded-lg  mb-4">

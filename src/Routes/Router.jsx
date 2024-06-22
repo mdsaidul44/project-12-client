@@ -58,7 +58,7 @@ import AllDonatinRequestDetails from "../components/AllDonaton/AllDonatinRequest
         {
           path: 'blogdetails/:id',
           element: <BlogDetails/>,
-          loader: ({params})=>fetch(`http://localhost:5000/blog/${params.id}`)
+          loader: ({params})=>fetch(`https://my-assignment12-server-seven.vercel.app/blog/${params.id}`)
         },
         {
           path: 'alldonation',
@@ -75,7 +75,7 @@ import AllDonatinRequestDetails from "../components/AllDonaton/AllDonatinRequest
         {
           path: 'donationDetails/:id',
           element: <PrivateRouter><AllDonatinRequestDetails/></PrivateRouter>,
-          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
+          loader: ({params})=>fetch(`https://my-assignment12-server-seven.vercel.app/requests/${params.id}`)
         }
       ]
     },
@@ -99,12 +99,12 @@ import AllDonatinRequestDetails from "../components/AllDonaton/AllDonatinRequest
         {
           path: 'editrequests/:id',
           element: <EditRequest/>,
-          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
+          loader: ({params})=>fetch(`https://my-assignment12-server-seven.vercel.app/requests/${params.id}`)
         },
         {
           path: 'details/:id',
           element: <DetailsRequest/>,
-          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
+          loader: ({params})=>fetch(`https://my-assignment12-server-seven.vercel.app/requests/${params.id}`)
         }, 
         {
           path: 'contact',
@@ -134,7 +134,7 @@ import AllDonatinRequestDetails from "../components/AllDonaton/AllDonatinRequest
         {
           path: 'updateBlog/:id',
           element: <AdminRouter><UpdateBlog/></AdminRouter>,
-          loader: ({params})=> fetch(`http://localhost:5000/blog/${params.id}`)
+          loader: ({params})=> fetch(`https://my-assignment12-server-seven.vercel.app/blog/${params.id}`)
         }, 
         // volunteer user
         {

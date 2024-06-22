@@ -5,9 +5,9 @@ import { TfiEmail } from "react-icons/tfi";
 
 
 const Contact = () => {
-    const [donors, setDonors] = useState([])
+    const [donors, setDonors] = useState([]) 
     useEffect(() => {
-        fetch('public/donor.json')
+        fetch('/public/donor.json')
             .then(res => res.json())
             .then(data => {
                 setDonors(data)

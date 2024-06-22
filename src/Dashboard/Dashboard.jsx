@@ -32,7 +32,7 @@ const Dashboard = () => {
                 <ul className="menu text-black">
                     <div className="avatar ">
                         <div className="w-24 rounded-full ring mx-auto my-4 ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src={user?.photoURL || 'https://i.ibb.co/DppxTgs/52d5d97dd7dd3125df4d7b45d55f2ce3.jpg'} />
+                            <img src={user?.photoURL || 'https://i.ibb.co/7V3sQ1n/download-6.jpg'} />
                         </div>
                     </div>
                     <div className="text-center shadow-lg p-4 rounded-lg shadow-gray-700 font-bold mb-4">
