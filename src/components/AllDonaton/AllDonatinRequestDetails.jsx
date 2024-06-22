@@ -1,11 +1,43 @@
 import { FaLocationDot } from "react-icons/fa6";
 import { Link, useLoaderData } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useEffect } from "react";
 
 const AllDonatinRequestDetails = () => {
     const {user}= useAuth()
     const details = useLoaderData()
+    const axiosPublic = useAxiosPublic()
     // console.log(details)
+    useEffect(()=>{ 
+        document.title  = "Dashboard | AddBlog"
+
+    })
+
+    const handleDonateRequest = async (data) => {
+        console.log('data paici', data)
+ 
+        const request = {
+            status: 'Inprogress'
+        }
+        console.log(request)
+        await axiosPublic.patch(`/request/${data._id}`, request)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    // show success popup 
+                    refetch()
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: 'Donate Done.. Inprogress',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+    }
     return (
         <div>
             <div className="hero h-96" style={{ backgroundImage: 'url(https://i.ibb.co/dWpyV8N/2148483283.jpg)' }}>
@@ -49,13 +81,13 @@ const AllDonatinRequestDetails = () => {
                     {/* Open the modal using document.getElementById('ID').showModal() method */}
                     <button className="btn btn-outline border-0 border-b-2 font-bold text-teal-400 hover:bg-teal-400" onClick={() => document.getElementById('my_modal_2').showModal()}>Donate</button>
                     <dialog id="my_modal_2" className="modal">
-                        <div className="modal-box">
+                        <div  className="modal-box">
                             <p className="text-sm mb-2">Name </p>
-                            <input placeholder="Name.." defaultValue={user.displayName} className="p-2 w-full rounded-lg" type="text" />
+                            <input placeholder="Name.." name="name" defaultValue={user.displayName} className="p-2 w-full rounded-lg" type="text" />
                             <br />
                             <p className="text-sm mt-4 mb-2">Email</p>
-                            <input placeholder="Your Email.." defaultValue={user.email} className="p-2 w-full rounded-lg " type="email" />
-                            <button className="btn mt-4">Done</button>
+                            <input placeholder="Your Email.." name="email" defaultValue={user.email} className="p-2 w-full rounded-lg " type="email" />
+                            <button onClick={()=>handleDonateRequest(details)} className="btn  mt-4 ">Donate</button> 
                         </div>
                         <form method="dialog" className="modal-backdrop">
                             <button>close</button>

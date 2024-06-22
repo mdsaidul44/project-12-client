@@ -74,7 +74,7 @@ import AllDonatinRequestDetails from "../components/AllDonaton/AllDonatinRequest
         },
         {
           path: 'donationDetails/:id',
-          element: <AllDonatinRequestDetails/>,
+          element: <PrivateRouter><AllDonatinRequestDetails/></PrivateRouter>,
           loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
         }
       ]
