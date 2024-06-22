@@ -53,7 +53,7 @@ const AllDonatinRequestDetails = () => {
             <div className="text-3xl font-bold text-center mt-10 text-teal-400">
                 <h1>Blood Request Details</h1>
             </div>
-            <div className="flex justify-around p-8 mt-10 bg-slate-900 rounded-lg">
+            <div className="lg:flex  justify-around p-8 mt-10 bg-slate-900 rounded-lg">
                 <div>
                     <div className="text-2xl font-bold text-teal-400  mb-14">
                         Requester Information
