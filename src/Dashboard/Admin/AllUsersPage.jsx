@@ -128,8 +128,8 @@ const AllUsersPage = () => {
 
     return (
         <div className='p-4 bg-gray-900 rounded-lg '>
-            <div className='flex justify-between shadow-lg shadow-black bg-slate-800 p-4 rounded-lg'>
-                <div className='shadow-lg shadow-slate-500 p-2'>
+            <div className='lg:flex justify-between shadow-lg shadow-black bg-slate-800 p-4 rounded-lg'>
+                <div className='shadow-lg mb-4 shadow-slate-500 p-2'>
                     <h1 className='text-stone-400 font-bold'>Admin / Dashboard</h1>
                     <p className='flex gap-2 font-semibold'>Home <FaAngleRight className='mt-1.5' /> Dashboard</p>
                 </div>

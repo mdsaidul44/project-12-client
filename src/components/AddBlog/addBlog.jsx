@@ -48,7 +48,7 @@ const AddBlog = () => {
         <div >
             <div className="flex bg-slate-50 pt-20 rounded-lg">
                 <div className="w-1/2">
-                    <img className="rounded-lg" src="https://i.ibb.co/RBSCJjL/4262873-2262375.jpg" alt="" />
+                    <img className="rounded-lg" src="https://i.ibb.co/Jcm49kp/how-to-start-a-blog-in-2020.jpg" alt="" />
                 </div>
                 <div className="w-1/2 p-4">
                     <form onSubmit={handleSubmit(onSubmit)}>

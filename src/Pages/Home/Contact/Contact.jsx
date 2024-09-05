@@ -8,7 +8,7 @@ const Contact = () => {
     const [donors, setDonors] = useState([]) 
     
     useEffect(() => {
-        fetch('https://my-assignment12-server-seven.vercel.app/contact')
+        fetch('http://localhost:5000/contact')
             .then(res => res.json())
             .then(data => {
                 setDonors(data)

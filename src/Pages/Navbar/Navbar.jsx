@@ -33,8 +33,8 @@ const Navbar = () => {
                             {Navlink}
                         </ul>
                     </div >
-                    <Link to='/'><a className="btn btn-ghost lg:text-3xl shadow-md shadow-red-100">
-                        <img className='w-12   rounded' src={bloodWave} alt="" />
+                    <Link to='/'><a className="lg:btn flex lg:btn-ghost lg:text-3xl shadow-md shadow-red-100">
+                        <img className='lg:w-12 w-6 rounded' src={bloodWave} alt="" />
                         <span className="text-red-600  font-bold">Blood</span>
                         <span className="text-black font-bold">Wave</span>
                     </a></Link>

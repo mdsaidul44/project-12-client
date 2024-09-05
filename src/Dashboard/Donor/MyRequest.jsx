@@ -35,9 +35,9 @@ const MyRequest = () => {
                 </div>
             </div>
             {/*---------- */}
-            <div role="tablist" className="tabs tabs-lifted bg-slate-600 p-4">
+            <div role="tablist" className="lg:tabs tabs-lifted bg-slate-600 p-4">
                 <input type="radio" name="my_tabs_2" role="tab" className="tab font-semibold text-white" aria-label="PENDING" checked />
-                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                <div role="tabpanel" className="lg:tab-content bg-base-100 border-base-300 rounded-box lg:p-6 p-2">
                     <div className="overflow-x-auto bg-gray-800 ">
                         <table className="table text-xl">
                             {/* head */}
@@ -100,7 +100,7 @@ const MyRequest = () => {
                 </div>
 
                 <input type="radio" name="my_tabs_2" role="tab" className="tab text-white font-semibold" aria-label="INPROGRESS" checked  />
-                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                <div role="tabpanel" className="lg:tab-content bg-base-100 border-base-300 rounded-box lg:p-6 p-2">
                 <div className="overflow-x-auto bg-gray-800 ">
                 <table className="table text-xl">
                     {/* head */}
@@ -163,7 +163,7 @@ const MyRequest = () => {
                 </div>
 
                 <input type="radio" name="my_tabs_2" role="tab" className="tab font-semibold text-white" aria-label="DONE" checked  />
-                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                <div role="tabpanel" className="lg:tab-content bg-base-100 border-base-300 rounded-box lg:p-6 p-2">
                 <div className="overflow-x-auto bg-gray-800 ">
                 <table className="table text-xl">
                     {/* head */}
@@ -226,7 +226,7 @@ const MyRequest = () => {
                 </div>
 
                 <input type="radio" name="my_tabs_2" role="tab" className="tab font-semibold text-white" aria-label="CANCELED" checked  />
-                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                <div role="tabpanel" className="lg:tab-content bg-base-100 border-base-300 rounded-box lg:p-6 p-2">
                 <div className="overflow-x-auto bg-gray-800 ">
                 <table aria-disabled className="table text-xl">
                     {/* head */}
