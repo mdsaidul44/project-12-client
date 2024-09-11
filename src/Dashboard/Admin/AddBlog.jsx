@@ -47,11 +47,11 @@ const AddBlog = () => {
     }
     return (
         <div >
-            <div className="flex bg-slate-50 pt-20 rounded-lg">
-                <div className="w-1/2">
+            <div className="lg:flex bg-slate-50 pt-20 rounded-lg">
+                <div className="lg:w-1/2">
                     <img className="rounded-lg" src="https://i.ibb.co/RBSCJjL/4262873-2262375.jpg" alt="" />
                 </div>
-                <div className="w-1/2 p-4">
+                <div className="lg:w-1/2 p-4">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div >
                             <label className="form-control   my-6">
