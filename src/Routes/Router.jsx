@@ -75,7 +75,7 @@ import AllDonatinRequestDetails from "../components/AllDonaton/AllDonatinRequest
         {
           path: 'donationDetails/:id',
           element: <PrivateRouter><AllDonatinRequestDetails/></PrivateRouter>,
-          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
+          loader: ({params})=>fetch(`https://blooddonations.vercel.app/${params.id}`)
         }
       ]
     },
@@ -99,12 +99,12 @@ import AllDonatinRequestDetails from "../components/AllDonaton/AllDonatinRequest
         {
           path: 'editrequests/:id',
           element: <EditRequest/>,
-          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
+          loader: ({params})=>fetch(`https://blooddonations.vercel.app/${params.id}`)
         },
         {
           path: 'details/:id',
           element: <DetailsRequest/>,
-          loader: ({params})=>fetch(`http://localhost:5000/requests/${params.id}`)
+          loader: ({params})=>fetch(`https://blooddonations.vercel.app/${params.id}`)
         }, 
         {
           path: 'contact',
