@@ -20,9 +20,9 @@ const SearchSection = () => {
 
     }
     return (
-        <div className=" ">
-            <div className="flex h-[420px] rounded-lg bg-teal-300">
-                <div className="w-1/2 p-8 mt-14 text-slate-900">
+        <div >
+            <div className="lg:flex h-[420px] rounded-lg bg-teal-300">
+                <div className="lg:w-1/2 p-8 mt-14 text-slate-900">
                     <div className="flex">
                         <img className="h-44 w-96 mr-4 rounded-full" src="https://i.ibb.co/XVLNhkH/2931-1.jpg" alt="" />
                        <div>
@@ -30,10 +30,9 @@ const SearchSection = () => {
                        <h1>A blood request search is a service or tool that helps individuals locate and request specific blood types or products from blood banks, hospitals, or donors.</h1>
                        </div>
                     </div>
-                   
                 </div>
-                <div className="w-1/2">
-                    <img className="h-[420px] rounded-lg w-full pl-8" src="https://i.ibb.co/xhYv1sm/262.jpg" alt="" />
+                <div className="lg:w-1/2">
+                    <img className="h-[420px] rounded-lg w-full lg:pl-8" src="https://i.ibb.co/xhYv1sm/262.jpg" alt="" />
                 </div>
             </div>
             <div className="text-teal-200 text-3xl mt-10 font-bold text-center w-60 mx-auto rounded-lg p-2 shadow-lg shadow-teal-600">Find Blood</div>
